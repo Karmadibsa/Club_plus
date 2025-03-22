@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mes Amis Adhérents</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadherents/adherent_mesamis.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/mesamis.css" />
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="adherent_evenement.html">
+              <i data-lucide="calendar"></i>
+              Calendrier
+            </a>
+          </li>
+          <li>
+            <a href="adherent_qrcode.html">
+              <i data-lucide="ticket"></i>
+              Mes billets
+            </a>
+          </li>
+          <li>
+            <a href="adherent_mesamis.html" class="active">
+              <i data-lucide="users"></i>
+              Mes amis
+            </a>
+          </li>
+          <li>
+            <a href="adherent_notations.html">
+              <i data-lucide="star"></i>
+              Notation
+            </a>
+          </li>
+          <li>
+            <a href="adherent_moncompte.html">
+              <i data-lucide="user"></i>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <header class="main-header">
+            <h1>Mes Amis Adhérents</h1>
+
+            <!-- Section code ami -->
+            <div class="friend-code-container">
+              <div class="friend-code-info">
+                <h3>Mon code ami</h3>
+                <p>
+                  Partagez ce code avec d'autres adhérents pour qu'ils puissent
+                  vous ajouter comme ami
+                </p>
+              </div>
+              <div class="friend-code-display">
+                <div class="code">CLUB-4567-8901</div>
+                <button class="copy-button" title="Copier le code">
+                  <i data-lucide="copy"></i>
+                  <span>Copier</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="header-actions">
+              <!-- Suppression des onglets "Mes amis" et "Demande" -->
+              <div class="search-wrapper">
+                <div class="search-container">
+                  <input
+                    type="text"
+                    placeholder="Rechercher un adhérent"
+                    class="search-input"
+                  />
+                  <i data-lucide="search" class="search-icon"></i>
+                </div>
+                <button class="add-friend-btn" title="Ajouter un ami">
+                  <i data-lucide="user-plus"></i>
+                  <span>Demander</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <main>
+            <div class="friends-list">
+              <table class="friends-table">
+                <thead>
+                  <tr>
+                    <th>Adhérent</th>
+                    <th>Téléphone</th>
+                    <th>Inscription</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="friend-card">
+                    <td data-label="Adhérent">
+                      <div class="user-info">
+                        <span class="user-name">Jane Doe</span>
+                      </div>
+                    </td>
+                    <td data-label="Téléphone">+33 6 12 34 56 78</td>
+                    <td data-label="Inscription">01/03/2023</td>
+                    <td class="actions-cell" data-label="Actions">
+                      <button class="action-btn" title="Supprimer cet ami">
+                        <i data-lucide="user-minus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="friend-card">
+                    <td data-label="Adhérent">
+                      <div class="user-info">
+                        <span class="user-name">John Smith</span>
+                      </div>
+                    </td>
+                    <td data-label="Téléphone">+33 6 23 45 67 89</td>
+                    <td data-label="Inscription">15/04/2023</td>
+                    <td class="actions-cell" data-label="Actions">
+                      <button class="action-btn" title="Supprimer cet ami">
+                        <i data-lucide="user-minus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="pagination">
+                <button class="pagination-btn">
+                  <i data-lucide="chevron-left"></i> Précédent
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">4</button>
+                <button class="pagination-btn">5</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">11</button>
+                <button class="pagination-btn">
+                  Suivant <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="adherent_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Calendrier</span>
+      </a>
+      <a href="adherent_qrcode.html" class="nav-item">
+        <i data-lucide="ticket"></i>
+        <span>Billets</span>
+      </a>
+      <a href="adherent_mesamis.html" class="nav-item active">
+        <i data-lucide="users"></i>
+        <span>Amis</span>
+      </a>
+      <a href="adherent_notations.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Notation</span>
+      </a>
+      <a href="adherent_moncompte.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Modal de confirmation pour la suppression d'un ami -->
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Confirmer la suppression</h2>
+          <button class="close-modal" id="closeModal">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-icon">
+            <i data-lucide="alert-triangle"></i>
+          </div>
+          <p>Êtes-vous sûr de vouloir supprimer cet ami de votre liste ?</p>
+          <p class="modal-friend-name">Jane Doe</p>
+          <p class="modal-subtitle">Cette action est irréversible.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelDelete">Annuler</button>
+          <button class="btn-confirm" id="confirmDelete">Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay pour l'arrière-plan sombre lors de l'affichage de la modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Initialisation de Lucide avec meilleure gestion d'erreur -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+            console.log("Icônes Lucide initialisées avec succès");
+          } else {
+            console.error("La bibliothèque Lucide n'a pas pu être chargée");
+          }
+        }, 100); // Léger délai pour être sûr que la bibliothèque est chargée
+      });
+    </script>
+    <script src="../../js/pages/mesamis.js"></script>
+  </body>
+</html>

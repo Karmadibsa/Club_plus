@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/base/common.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/footer.css" />
+    <link rel="stylesheet" href="../../css/pages/public/public_tarifs.css" />
+    <script src="../../js/components/navbar.js" defer></script>
+    <title>Club Plus - Tarifs</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- Ajoutez le menu burger -->
+      <div class="menu-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navbar-container">
+        <!-- Logo à gauche -->
+        <div class="navbar-logo">
+          <a href="../../index.html">
+            <img
+              src="../../assets/images/LogoClubPlussansfond.png"
+              alt="Logo"
+            />
+          </a>
+        </div>
+
+        <!-- Boutons de navigation au centre -->
+        <ul class="navbar-menu">
+          <li><a href="../../index.html">Accueil</a></li>
+          <li><a href="public_aPropos.html">À propos</a></li>
+          <li><a href="public_tarifs.html">Tarifs</a></li>
+          <li><a href="public_contact.html">Contact</a></li>
+        </ul>
+
+        <!-- Boutons d'inscription/connexion à droite -->
+        <div class="navbar-buttons">
+          <a href="public_inscriptionClub.html" class="btn">Club</a>
+          <a href="public_inscriptionMembres.html" class="btn">Adhérents</a>
+          <a href="public_connexion.html" class="btn">Se connecter</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pricing-container">
+      <div class="pricing-header">
+        <h1>Nos Formules</h1>
+        <p>
+          Choisissez le plan qui correspond le mieux aux besoins de votre club
+        </p>
+      </div>
+
+      <div class="pricing-toggle">
+        <span class="toggle-option active">Mensuel</span>
+        <label class="switch">
+          <input type="checkbox" id="pricing-toggle" />
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-option"
+          >Annuel <span class="discount">-20%</span></span
+        >
+      </div>
+
+      <div class="pricing-plans">
+        <div class="pricing-plan">
+          <div class="plan-header">
+            <h3>Essentiel</h3>
+            <div class="plan-price">
+              <span class="price monthly">19€</span>
+              <span class="price annual">15€</span>
+              <span class="period">/mois</span>
+            </div>
+            <p>Idéal pour les petits clubs</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li><i class="fas fa-check"></i> Jusqu'à 50 membres</li>
+              <li><i class="fas fa-check"></i> Gestion des adhésions</li>
+              <li><i class="fas fa-check"></i> Calendrier d'événements</li>
+              <li><i class="fas fa-check"></i> Support email</li>
+              <li class="disabled">
+                <i class="fas fa-times"></i> Paiement en ligne
+              </li>
+              <li class="disabled">
+                <i class="fas fa-times"></i> Module de communication
+              </li>
+              <li class="disabled">
+                <i class="fas fa-times"></i> Analyse statistique
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a href="#" class="btn plan-btn">Commencer</a>
+          </div>
+        </div>
+
+        <div class="pricing-plan popular">
+          <div class="popular-badge">Populaire</div>
+          <div class="plan-header">
+            <h3>Premium</h3>
+            <div class="plan-price">
+              <span class="price monthly">39€</span>
+              <span class="price annual">31€</span>
+              <span class="period">/mois</span>
+            </div>
+            <p>Pour les clubs en pleine croissance</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li><i class="fas fa-check"></i> Jusqu'à 200 membres</li>
+              <li><i class="fas fa-check"></i> Gestion des adhésions</li>
+              <li><i class="fas fa-check"></i> Calendrier d'événements</li>
+              <li><i class="fas fa-check"></i> Support email & téléphone</li>
+              <li><i class="fas fa-check"></i> Paiement en ligne</li>
+              <li><i class="fas fa-check"></i> Module de communication</li>
+              <li class="disabled">
+                <i class="fas fa-times"></i> Analyse statistique
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a href="#" class="btn plan-btn">Commencer</a>
+          </div>
+        </div>
+
+        <div class="pricing-plan">
+          <div class="plan-header">
+            <h3>Pro</h3>
+            <div class="plan-price">
+              <span class="price monthly">79€</span>
+              <span class="price annual">63€</span>
+              <span class="period">/mois</span>
+            </div>
+            <p>Solution complète pour grands clubs</p>
+          </div>
+          <div class="plan-features">
+            <ul>
+              <li><i class="fas fa-check"></i> Membres illimités</li>
+              <li><i class="fas fa-check"></i> Gestion des adhésions</li>
+              <li><i class="fas fa-check"></i> Calendrier d'événements</li>
+              <li><i class="fas fa-check"></i> Support prioritaire 24/7</li>
+              <li><i class="fas fa-check"></i> Paiement en ligne</li>
+              <li><i class="fas fa-check"></i> Module de communication</li>
+              <li><i class="fas fa-check"></i> Analyse statistique avancée</li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a href="#" class="btn plan-btn">Commencer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-faq">
+        <h2>Questions fréquentes</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Puis-je changer de formule à tout moment ?</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Oui, vous pouvez passer à une formule supérieure à tout moment.
+                Le changement prendra effet immédiatement et la différence sera
+                calculée au prorata.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Comment fonctionne la période d'essai ?</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Chaque formule comprend une période d'essai gratuite de 14
+                jours. Aucune carte bancaire n'est requise pendant cette
+                période.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Proposez-vous des tarifs spéciaux pour les associations ?</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Oui, nous proposons des réductions pour les associations à but
+                non lucratif. Contactez notre service commercial pour plus
+                d'informations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <div class="footer-nav">
+          <a href="public_aPropos.html">A propos</a>
+          <a href="public_tarifs.html">Tarifs</a>
+          <a href="public_contact.html">Contact</a>
+        </div>
+        <div class="footer-logo">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+          />
+          <p>CompanyName 2024. All rights reserved.</p>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle between monthly and annual pricing
+      document
+        .getElementById("pricing-toggle")
+        .addEventListener("change", function () {
+          document.querySelectorAll(".pricing-plans").forEach(function (plan) {
+            plan.classList.toggle("annual");
+          });
+        });
+
+      // FAQ toggle
+      document.querySelectorAll(".faq-question").forEach(function (question) {
+        question.addEventListener("click", function () {
+          this.parentElement.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

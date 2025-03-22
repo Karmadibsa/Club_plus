@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des membres</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_membres.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/mesamis.css" />
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="admin_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="admin_evenement.html">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="admin_membres.html" class="active">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+          <li>
+            <a href="admin_monclub.html">
+              <i data-lucide="home"></i>
+              Mon Club
+            </a>
+          </li>
+          <!-- Bouton "Mon Profil" supprimé -->
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <header class="main-header">
+            <h1>Les Membres de Mon Club</h1>
+
+            <!-- Section code club -->
+            <div class="friend-code-container">
+              <div class="friend-code-info">
+                <h3>Code Club</h3>
+                <p>
+                  Voici le code unique de votre club que les nouveaux membres
+                  peuvent utiliser pour s'inscrire
+                </p>
+              </div>
+              <div class="friend-code-display">
+                <div class="code">CLUB-4567-8901</div>
+                <button class="copy-button" title="Copier le code">
+                  <i data-lucide="copy"></i>
+                  <span>Copier</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="header-actions">
+              <div class="search-wrapper">
+                <div class="search-container">
+                  <i data-lucide="search" class="search-icon"></i>
+                  <input
+                    type="text"
+                    placeholder="Rechercher par nom ou prénom"
+                    class="search-input"
+                    id="member-search"
+                  />
+                </div>
+
+                <!-- Ajout des filtres par rôle -->
+                <div class="role-filters">
+                  <span class="role-filter-label">Filtrer par rôle:</span>
+                  <div class="role-filter-options">
+                    <label class="role-option">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="admin"
+                        checked
+                      />
+                      Admin
+                    </label>
+                    <label class="role-option">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="reservation"
+                        checked
+                      />
+                      Réservation
+                    </label>
+                    <label class="role-option">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="adherent"
+                        checked
+                      />
+                      Adhérent
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <main>
+            <div class="friends-list">
+              <!-- Vue mobile avec cartes -->
+              <div class="mobile-members-cards">
+                <!-- Carte pour chaque membre -->
+                <div class="member-card" data-role="admin" data-id="1">
+                  <div class="member-card-header">
+                    <h3 class="member-name">Jane Doe</h3>
+                    <div class="member-info">
+                      <div class="member-inscription">
+                        Inscrit le: 01/03/2023
+                      </div>
+                      <div class="member-role admin">Admin</div>
+                    </div>
+                  </div>
+                  <div class="member-card-body">
+                    <div class="member-detail">
+                      <i data-lucide="mail"></i>
+                      <span>jane.doe@email.com</span>
+                    </div>
+                    <div class="member-detail">
+                      <i data-lucide="phone"></i>
+                      <span>+33 6 12 34 56 78</span>
+                    </div>
+                    <div class="member-detail full-width">
+                      <i data-lucide="map-pin"></i>
+                      <span>23 rue des Lilas, 75001 Paris</span>
+                    </div>
+                  </div>
+                  <div class="member-card-actions">
+                    <a
+                      href="javascript:window.location.href='admin_editmembre.html?id=1';"
+                      class="card-action-btn edit-btn"
+                      onclick="event.stopPropagation(); window.location.href='admin_editmembre.html?id=1'; return false;"
+                    >
+                      <i data-lucide="pencil"></i>
+                      Modifier
+                    </a>
+                    <button class="card-action-btn delete-btn">
+                      <i data-lucide="trash-2"></i>
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+
+                <div class="member-card" data-role="reservation" data-id="2">
+                  <div class="member-card-header">
+                    <h3 class="member-name">John Smith</h3>
+                    <div class="member-info">
+                      <div class="member-inscription">
+                        Inscrit le: 15/04/2023
+                      </div>
+                      <div class="member-role reservation">Réservation</div>
+                    </div>
+                  </div>
+                  <div class="member-card-body">
+                    <div class="member-detail">
+                      <i data-lucide="mail"></i>
+                      <span>john.smith@email.com</span>
+                    </div>
+                    <div class="member-detail">
+                      <i data-lucide="phone"></i>
+                      <span>+33 6 23 45 67 89</span>
+                    </div>
+                    <div class="member-detail full-width">
+                      <i data-lucide="map-pin"></i>
+                      <span>45 avenue Victor Hugo, 75016 Paris</span>
+                    </div>
+                  </div>
+                  <div class="member-card-actions">
+                    <a
+                      href="admin_editmembre.html?id=2"
+                      class="card-action-btn edit-btn"
+                    >
+                      <i data-lucide="pencil"></i>
+                      Modifier
+                    </a>
+                    <button class="card-action-btn delete-btn">
+                      <i data-lucide="trash-2"></i>
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Répétez pour les autres membres -->
+                <div class="member-card" data-role="adherent" data-id="3">
+                  <div class="member-card-header">
+                    <h3 class="member-name">Marie Dubois</h3>
+                    <div class="member-info">
+                      <div class="member-inscription">
+                        Inscrit le: 03/05/2023
+                      </div>
+                      <div class="member-role adherent">Adhérent</div>
+                    </div>
+                  </div>
+                  <div class="member-card-body">
+                    <div class="member-detail">
+                      <i data-lucide="mail"></i>
+                      <span>marie.dubois@email.com</span>
+                    </div>
+                    <div class="member-detail">
+                      <i data-lucide="phone"></i>
+                      <span>+33 6 34 56 78 90</span>
+                    </div>
+                    <div class="member-detail full-width">
+                      <i data-lucide="map-pin"></i>
+                      <span>12 rue de la Paix, 75002 Paris</span>
+                    </div>
+                  </div>
+                  <div class="member-card-actions">
+                    <a
+                      href="admin_editmembre.html?id=3"
+                      class="card-action-btn edit-btn"
+                    >
+                      <i data-lucide="pencil"></i>
+                      Modifier
+                    </a>
+                    <button class="card-action-btn delete-btn">
+                      <i data-lucide="trash-2"></i>
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+
+                <div class="member-card" data-role="adherent" data-id="4">
+                  <div class="member-card-header">
+                    <h3 class="member-name">Sophie Leroy</h3>
+                    <div class="member-info">
+                      <div class="member-inscription">
+                        Inscrit le: 10/06/2023
+                      </div>
+                      <div class="member-role adherent">Adhérent</div>
+                    </div>
+                  </div>
+                  <div class="member-card-body">
+                    <div class="member-detail">
+                      <i data-lucide="mail"></i>
+                      <span>sophie.leroy@email.com</span>
+                    </div>
+                    <div class="member-detail">
+                      <i data-lucide="phone"></i>
+                      <span>+33 6 56 78 90 12</span>
+                    </div>
+                    <div class="member-detail full-width">
+                      <i data-lucide="map-pin"></i>
+                      <span>34 avenue Montaigne, 75008 Paris</span>
+                    </div>
+                  </div>
+                  <div class="member-card-actions">
+                    <a
+                      href="admin_editmembre.html?id=4"
+                      class="card-action-btn edit-btn"
+                    >
+                      <i data-lucide="pencil"></i>
+                      Modifier
+                    </a>
+                    <button class="card-action-btn delete-btn">
+                      <i data-lucide="trash-2"></i>
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Ajoutez d'autres membres ici -->
+              </div>
+
+              <!-- Vue desktop avec tableau -->
+              <table class="friends-table">
+                <thead>
+                  <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Inscription</th>
+                    <th>Rôle</th>
+                    <!-- Nouvelle colonne -->
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-role="admin" data-id="1">
+                    <td>Jane</td>
+                    <td>Doe</td>
+                    <td>jane.doe@email.com</td>
+                    <td>+33 6 12 34 56 78</td>
+                    <td>23 rue des Lilas, 75001 Paris</td>
+                    <td>01/03/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge admin">Admin</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=1"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role="reservation" data-id="2">
+                    <td>John</td>
+                    <td>Smith</td>
+                    <td>john.smith@email.com</td>
+                    <td>+33 6 23 45 67 89</td>
+                    <td>45 avenue Victor Hugo, 75016 Paris</td>
+                    <td>15/04/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge reservation">Réservation</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=2"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="3">
+                    <td>Marie</td>
+                    <td>Dubois</td>
+                    <td>marie.dubois@email.com</td>
+                    <td>+33 6 34 56 78 90</td>
+                    <td>12 rue de la Paix, 75002 Paris</td>
+                    <td>03/05/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=3"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="4">
+                    <td>Pierre</td>
+                    <td>Martin</td>
+                    <td>pierre.martin@email.com</td>
+                    <td>+33 6 45 67 89 01</td>
+                    <td>8 rue du Commerce, 75015 Paris</td>
+                    <td>22/05/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=4"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="5">
+                    <td>Sophie</td>
+                    <td>Leroy</td>
+                    <td>sophie.leroy@email.com</td>
+                    <td>+33 6 56 78 90 12</td>
+                    <td>34 avenue Montaigne, 75008 Paris</td>
+                    <td>10/06/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=5"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="6">
+                    <td>Thomas</td>
+                    <td>Bernard</td>
+                    <td>thomas.bernard@email.com</td>
+                    <td>+33 6 67 89 01 23</td>
+                    <td>56 boulevard Saint-Germain, 75005 Paris</td>
+                    <td>18/06/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=6"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="7">
+                    <td>Camille</td>
+                    <td>Petit</td>
+                    <td>camille.petit@email.com</td>
+                    <td>+33 6 78 90 12 34</td>
+                    <td>17 rue de Rivoli, 75004 Paris</td>
+                    <td>05/07/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=7"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-role="adherent" data-id="8">
+                    <td>Lucas</td>
+                    <td>Robert</td>
+                    <td>lucas.robert@email.com</td>
+                    <td>+33 6 89 01 23 45</td>
+                    <td>29 rue Saint-Honoré, 75001 Paris</td>
+                    <td>20/07/2023</td>
+                    <td class="role-cell">
+                      <span class="role-badge adherent">Adhérent</span>
+                    </td>
+                    <td class="actions-cell">
+                      <div class="action-btn-container">
+                        <a
+                          href="admin_editmembre.html?id=8"
+                          class="action-btn edit-btn"
+                          title="Modifier ce membre"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
+                        <button
+                          class="action-btn delete-btn"
+                          title="Supprimer ce membre"
+                        >
+                          <i data-lucide="trash-2"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="pagination">
+                <button class="pagination-btn">
+                  <i data-lucide="chevron-left"></i> Précédent
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">4</button>
+                <button class="pagination-btn">5</button>
+                <span class="pagination-ellipsis">...</span>
+                <button class="pagination-btn">11</button>
+                <button class="pagination-btn">
+                  Suivant <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="admin_dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="admin_membres.html" class="nav-item active">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+      <a href="admin_monclub.html" class="nav-item">
+        <i data-lucide="home"></i>
+        <span>Club</span>
+      </a>
+    </nav>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <i data-lucide="trash-2"></i>
+          </div>
+          <h3>Confirmer la suppression</h3>
+        </div>
+        <div class="modal-content">
+          <p>Vous êtes sur le point de supprimer le membre :</p>
+          <p
+            id="memberNameToDelete"
+            style="font-weight: 600; margin: 10px 0"
+          ></p>
+          <p class="warning">
+            Cette action est irréversible et supprimera toutes les données
+            associées à ce membre.
+          </p>
+          <div class="modal-actions">
+            <button id="cancelDelete" class="cancel-btn">Annuler</button>
+            <button id="confirmDelete" class="confirm-btn">
+              Supprimer définitivement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Initialisation de Lucide avec meilleure gestion d'erreur -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+          console.log("Icônes Lucide initialisées avec succès");
+        } else {
+          console.error("La bibliothèque Lucide n'a pas pu être chargée");
+        }
+
+        // Vérifier et appliquer la vue mobile si nécessaire
+        function checkMobileView() {
+          const isMobile = window.innerWidth <= 768;
+          const tableView = document.querySelector(".friends-table");
+          const cardsView = document.querySelector(".mobile-members-cards");
+
+          if (isMobile) {
+            if (tableView) tableView.style.display = "none";
+            if (cardsView) cardsView.style.display = "flex";
+          } else {
+            if (tableView) tableView.style.display = "table";
+            if (cardsView) cardsView.style.display = "none";
+          }
+        }
+
+        // Appliquer lors du chargement
+        checkMobileView();
+
+        // Réappliquer lors du redimensionnement
+        window.addEventListener("resize", checkMobileView);
+
+        // Fonctionnalité de recherche simple - appliquée à la fois au tableau et aux cartes
+        const searchInput = document.getElementById("member-search");
+        const tableRows = document.querySelectorAll(".friends-table tbody tr");
+        const memberCards = document.querySelectorAll(".member-card");
+        const roleCheckboxes = document.querySelectorAll(
+          'input[type="checkbox"][name="role"]'
+        );
+
+        function applyFilters() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const selectedRoles = Array.from(
+            document.querySelectorAll('input[name="role"]:checked')
+          ).map((checkbox) => checkbox.value);
+
+          // Filtrer le tableau (vue desktop)
+          tableRows.forEach((row) => {
+            const firstName = row.cells[0].textContent.toLowerCase();
+            const lastName = row.cells[1].textContent.toLowerCase();
+            const role = row.getAttribute("data-role");
+
+            const nameMatch =
+              firstName.includes(searchTerm) || lastName.includes(searchTerm);
+            const roleMatch = selectedRoles.includes(role);
+
+            if (nameMatch && roleMatch) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+
+          // Filtrer les cartes (vue mobile)
+          memberCards.forEach((card) => {
+            const fullName = card
+              .querySelector(".member-name")
+              .textContent.toLowerCase();
+            const role = card.getAttribute("data-role");
+
+            const nameMatch = fullName.includes(searchTerm);
+            const roleMatch = selectedRoles.includes(role);
+
+            if (nameMatch && roleMatch) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener("input", applyFilters);
+        }
+
+        // Appliquer les filtres quand les checkboxes de rôle changent
+        roleCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", applyFilters);
+        });
+
+        // Initialiser le bouton de copie
+        const copyButton = document.querySelector(".copy-button");
+        if (copyButton) {
+          copyButton.addEventListener("click", function () {
+            const codeText = document.querySelector(".code").textContent;
+            navigator.clipboard.writeText(codeText).then(() => {
+              // Afficher une indication de réussite
+              this.classList.add("copied");
+              this.querySelector("span").textContent = "Copié !";
+
+              // Remettre le bouton à l'état initial après 2 secondes
+              setTimeout(() => {
+                this.classList.remove("copied");
+                this.querySelector("span").textContent = "Copier";
+              }, 2000);
+            });
+          });
+        }
+
+        // Gestion de la modal de confirmation de suppression
+        const deleteModal = document.getElementById("deleteModal");
+        const cancelDelete = document.getElementById("cancelDelete");
+        const confirmDelete = document.getElementById("confirmDelete");
+        const memberNameToDelete =
+          document.getElementById("memberNameToDelete");
+        let currentMemberId = null;
+
+        // Ajouter les événements de clic à tous les boutons de suppression
+        document.querySelectorAll(".delete-btn").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            console.log("Bouton de suppression cliqué");
+            e.preventDefault(); // Empêcher toute action par défaut
+            e.stopPropagation(); // Empêcher la propagation de l'événement
+
+            // Récupérer l'ID du membre depuis le tr ou la card parent
+            const memberContainer = this.closest("[data-id]");
+            currentMemberId = memberContainer
+              ? memberContainer.getAttribute("data-id")
+              : null;
+
+            // Récupérer le nom du membre
+            let memberName = "";
+            if (memberContainer) {
+              // Si c'est une carte mobile
+              if (memberContainer.classList.contains("member-card")) {
+                memberName =
+                  memberContainer.querySelector(".member-name").textContent;
+              }
+              // Si c'est une ligne de tableau
+              else {
+                memberName = `${memberContainer.cells[0].textContent} ${memberContainer.cells[1].textContent}`;
+              }
+            }
+
+            // Afficher le nom dans la modal
+            if (memberNameToDelete) {
+              memberNameToDelete.textContent = memberName;
+            }
+
+            console.log("ID du membre à supprimer:", currentMemberId);
+
+            // Afficher la modal
+            if (deleteModal) {
+              deleteModal.classList.add("show");
+              console.log("Modal affichée");
+            } else {
+              console.error("Modal non trouvée");
+            }
+          });
+        });
+
+        // Fermer la modal quand on clique sur Annuler
+        if (cancelDelete) {
+          cancelDelete.addEventListener("click", function () {
+            console.log("Annulation de la suppression");
+            deleteModal.classList.remove("show");
+            currentMemberId = null;
+          });
+        } else {
+          console.error("Bouton d'annulation non trouvé");
+        }
+
+        // Action quand on confirme la suppression
+        if (confirmDelete) {
+          confirmDelete.addEventListener("click", function () {
+            console.log("Confirmation de la suppression");
+            if (currentMemberId) {
+              console.log("Suppression du membre #" + currentMemberId);
+              // Ici vous pouvez ajouter le code pour supprimer le membre
+              // Par exemple, une requête AJAX vers votre backend
+
+              // Après suppression, on pourrait masquer l'élément dans l'UI
+              const memberElements = document.querySelectorAll(
+                `[data-id="${currentMemberId}"]`
+              );
+              memberElements.forEach((el) => (el.style.display = "none"));
+            }
+
+            // Fermer la modal
+            deleteModal.classList.remove("show");
+            currentMemberId = null;
+          });
+        } else {
+          console.error("Bouton de confirmation non trouvé");
+        }
+
+        // S'assurer que les liens d'édition fonctionnent correctement
+        document.querySelectorAll(".edit-btn").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            // Empêcher toute interception par d'autres scripts
+            e.stopPropagation();
+            // Récupérer l'URL et naviguer explicitement
+            const href = this.getAttribute("href");
+            window.location.href = href;
+          });
+        });
+      });
+    </script>
+    <!-- Script externe - commenté pour éviter les conflits -->
+    <!-- <script src="../../js/pages/mesamis.js"></script> -->
+  </body>
+</html>

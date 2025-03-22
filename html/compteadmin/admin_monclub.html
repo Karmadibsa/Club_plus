@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Club</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_monclub.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="admin_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="admin_evenement.html">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="admin_membres.html">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+          <li>
+            <a href="admin_monclub.html" class="active">
+              <i data-lucide="home"></i>
+              Mon Club
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <header class="main-header">
+            <h1>Information du Club</h1>
+            <p class="subtitle">
+              Gérez les informations de votre club et personnalisez votre espace
+            </p>
+          </header>
+
+          <main class="club-main">
+            <div class="club-content">
+              <!-- Section pour les informations du club -->
+              <section class="club-section">
+                <h2 class="section-title">Informations Générales</h2>
+                <form id="club-info-form" class="info-form">
+                  <div class="form-row">
+                    <div class="form-group full-width">
+                      <label for="club-name">Nom du Club</label>
+                      <input
+                        type="text"
+                        id="club-name"
+                        name="clubName"
+                        placeholder="Sport Club Paris"
+                        value="Sport Club Paris"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Ajout des champs pour le gérant -->
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="manager-firstname">Prénom du gérant</label>
+                      <input
+                        type="text"
+                        id="manager-firstname"
+                        name="managerFirstname"
+                        placeholder="Prénom"
+                        value="Jean"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="manager-lastname">Nom du gérant</label>
+                      <input
+                        type="text"
+                        id="manager-lastname"
+                        name="managerLastname"
+                        placeholder="Nom"
+                        value="Dupont"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="club-email">Email de Contact</label>
+                      <input
+                        type="email"
+                        id="club-email"
+                        name="clubEmail"
+                        placeholder="contact@sportclubparis.fr"
+                        value="contact@sportclubparis.fr"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="club-phone">Téléphone</label>
+                      <input
+                        type="tel"
+                        id="club-phone"
+                        name="clubPhone"
+                        placeholder="+33 1 23 45 67 89"
+                        value="+33 1 23 45 67 89"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="club-description">Description du Club</label>
+                    <textarea
+                      id="club-description"
+                      name="clubDescription"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Présentez votre club, son histoire, sa mission..."
+                    >
+Le Sport Club Paris est un club multisports proposant des activités sportives variées pour tous les âges. Venez nous rejoindre dans une ambiance conviviale et dynamisante.</textarea
+                    >
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="club-foundation">Date de création</label>
+                      <input
+                        type="date"
+                        id="club-foundation"
+                        name="clubFoundation"
+                        value="1990-05-15"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </section>
+
+              <!-- Section pour l'adresse du club -->
+              <section class="club-section">
+                <h2 class="section-title">Localisation</h2>
+                <form id="club-address-form" class="info-form">
+                  <div class="form-row">
+                    <div class="form-group full-width">
+                      <label for="address-line1">Adresse</label>
+                      <input
+                        type="text"
+                        id="address-line1"
+                        name="addressLine1"
+                        placeholder="Numéro et nom de rue"
+                        value="23 Avenue des Sports"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="address-city">Ville</label>
+                      <input
+                        type="text"
+                        id="address-city"
+                        name="addressCity"
+                        placeholder="Ville"
+                        value="Paris"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="address-zipcode">Code Postal</label>
+                      <input
+                        type="text"
+                        id="address-zipcode"
+                        name="addressZipcode"
+                        placeholder="Code postal"
+                        value="75016"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group full-width">
+                    <label for="club-lieu">Lieu (nom de l'établissement)</label>
+                    <input
+                      type="text"
+                      id="club-lieu"
+                      name="clubLieu"
+                      placeholder="Centre sportif, gymnase, stade..."
+                      value="Centre Sportif Jean Bouin"
+                      class="form-control"
+                    />
+                  </div>
+                </form>
+              </section>
+
+              <!-- Section pour les réseaux sociaux -->
+              <section class="club-section">
+                <h2 class="section-title">Réseaux sociaux</h2>
+                <form id="club-social-form" class="info-form">
+                  <div class="form-row">
+                    <div class="form-group social-input">
+                      <i data-lucide="globe" class="social-icon"></i>
+                      <input
+                        type="url"
+                        id="club-website"
+                        name="clubWebsite"
+                        placeholder="Site web (https://...)"
+                        value="https://www.sportclubparis.fr"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group social-input">
+                      <i data-lucide="facebook" class="social-icon"></i>
+                      <input
+                        type="url"
+                        id="club-facebook"
+                        name="clubFacebook"
+                        placeholder="Facebook"
+                        value="https://facebook.com/sportclubparis"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group social-input">
+                      <i data-lucide="instagram" class="social-icon"></i>
+                      <input
+                        type="url"
+                        id="club-instagram"
+                        name="clubInstagram"
+                        placeholder="Instagram"
+                        value="https://instagram.com/sportclubparis"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </section>
+
+              <!-- Boutons d'action -->
+              <div class="actions-container">
+                <button class="btn btn-primary" id="save-club-btn">
+                  Enregistrer les modifications
+                </button>
+                <button class="btn btn-secondary" id="reset-club-btn">
+                  Annuler
+                </button>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="admin_dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="admin_membres.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+      <a href="admin_monclub.html" class="nav-item active">
+        <i data-lucide="home"></i>
+        <span>Club</span>
+      </a>
+    </nav>
+
+    <!-- Initialisation de Lucide et scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+          console.log("Icônes Lucide initialisées avec succès");
+        } else {
+          console.error("La bibliothèque Lucide n'a pas pu être chargée");
+        }
+
+        // Gestion du formulaire
+        const saveBtn = document.getElementById("save-club-btn");
+        const resetBtn = document.getElementById("reset-club-btn");
+
+        if (saveBtn) {
+          saveBtn.addEventListener("click", function () {
+            // Simuler la sauvegarde
+            alert("Informations du club mises à jour avec succès !");
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener("click", function () {
+            // Reset tous les formulaires
+            document.getElementById("club-info-form").reset();
+            document.getElementById("club-address-form").reset();
+            document.getElementById("club-social-form").reset();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

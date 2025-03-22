@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Adhérents</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadherents/adherent_qrcode.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/qrcode.css" />
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Revenir à Lucide avec une version spécifique pour plus de stabilité -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <!-- Ajout de la bibliothèque html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Ajout de jsPDF pour une génération directe de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation avec icônes Lucide -->
+        <ul class="menu-items">
+          <li>
+            <a href="adherent_evenement.html">
+              <i data-lucide="calendar"></i>
+              Calendrier
+            </a>
+          </li>
+          <li>
+            <a href="adherent_qrcode.html" class="active">
+              <i data-lucide="ticket"></i>
+              Mes billets
+            </a>
+          </li>
+          <li>
+            <a href="adherent_mesamis.html">
+              <i data-lucide="users"></i>
+              Mes amis
+            </a>
+          </li>
+          <li>
+            <a href="adherent_notations.html">
+              <i data-lucide="star"></i>
+              Notation
+            </a>
+          </li>
+          <li>
+            <a href="adherent_moncompte.html">
+              <i data-lucide="user"></i>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <div class="header">
+            <h1><i data-lucide="ticket"></i> Vos billets</h1>
+          </div>
+
+          <!-- Conteneur pour les tickets multiples - plus compact -->
+          <div class="tickets-container">
+            <!-- Sélecteur d'événement et navigation sur la même ligne -->
+            <div class="controls-row">
+              <div class="event-selector">
+                <label for="event-select">Sélectionner un événement:</label>
+                <select id="event-select" class="event-select">
+                  <option value="all">Tous les événements</option>
+                  <option value="match-basket">Match de Basketball</option>
+                  <option value="match-foot">Match de Football</option>
+                  <option value="concert">Concert</option>
+                </select>
+              </div>
+
+              <!-- Contrôle de navigation des tickets -->
+              <div class="tickets-navigation">
+                <span class="ticket-counter"
+                  >Billet <span id="currentTicket">1</span> sur
+                  <span id="totalTickets">2</span></span
+                >
+                <div class="nav-buttons">
+                  <button id="prevTicket" class="nav-btn" disabled>
+                    <i data-lucide="chevron-left"></i>
+                  </button>
+                  <button id="nextTicket" class="nav-btn">
+                    <i data-lucide="chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carrousel de tickets -->
+            <div class="tickets-carousel">
+              <!-- Premier ticket - Match de Basketball -->
+              <div
+                class="ticket-card active"
+                data-ticket="1"
+                data-event="match-basket"
+              >
+                <div class="event-details">
+                  <h2>Match de Basketball</h2>
+                  <p>
+                    <i data-lucide="map-pin"></i> <strong>Adresse:</strong> 45
+                    rue du Moulin, 54000 Metz
+                  </p>
+                  <p>
+                    <i data-lucide="users"></i>
+                    <strong>Billet:</strong> 1 Adulte
+                  </p>
+                  <p>
+                    <i data-lucide="armchair"></i>
+                    <strong>Localisation:</strong> Tribune Est
+                  </p>
+                  <p>
+                    <i data-lucide="calendar"></i>
+                    <strong>Date:</strong> 01/01/2025 à 17h30
+                  </p>
+                </div>
+                <div class="qr-code-container">
+                  <div class="qr-code-wrapper">
+                    <canvas id="qrcode1" width="200" height="200"></canvas>
+                    <div class="zoom-overlay">
+                      <i data-lucide="search-plus"></i>
+                    </div>
+                  </div>
+                  <p class="instructions">Présentez ce QR code à l'entrée</p>
+                </div>
+              </div>
+
+              <!-- Second ticket - Match de Basketball -->
+              <div
+                class="ticket-card"
+                data-ticket="2"
+                data-event="match-basket"
+              >
+                <div class="event-details">
+                  <h2>Match de Basketball</h2>
+                  <p>
+                    <i data-lucide="map-pin"></i>
+                    <strong>Adresse:</strong> 45 rue du Moulin, 54000 Metz
+                  </p>
+                  <p>
+                    <i data-lucide="users"></i>
+                    <strong>Billet:</strong> 1 Enfant
+                  </p>
+                  <p>
+                    <i data-lucide="armchair"></i>
+                    <strong>Localisation:</strong> Tribune Est
+                  </p>
+                  <p>
+                    <i data-lucide="calendar"></i>
+                    <strong>Date:</strong> 01/01/2025 à 17h30
+                  </p>
+                </div>
+                <div class="qr-code-container">
+                  <div class="qr-code-wrapper">
+                    <canvas id="qrcode2" width="200" height="200"></canvas>
+                    <div class="zoom-overlay">
+                      <i data-lucide="search-plus"></i>
+                    </div>
+                  </div>
+                  <p class="instructions">Présentez ce QR code à l'entrée</p>
+                </div>
+              </div>
+
+              <!-- Ticket Match de Football -->
+              <div class="ticket-card" data-ticket="3" data-event="match-foot">
+                <div class="event-details">
+                  <h2>Match de Football</h2>
+                  <p>
+                    <i data-lucide="map-pin"></i>
+                    <strong>Adresse:</strong> Stade Municipal, 54000 Metz
+                  </p>
+                  <p>
+                    <i data-lucide="users"></i>
+                    <strong>Billet:</strong> 1 Adulte
+                  </p>
+                  <p>
+                    <i data-lucide="armchair"></i>
+                    <strong>Localisation:</strong> Tribune Ouest
+                  </p>
+                  <p>
+                    <i data-lucide="calendar"></i>
+                    <strong>Date:</strong> 15/01/2025 à 19h00
+                  </p>
+                </div>
+                <div class="qr-code-container">
+                  <div class="qr-code-wrapper">
+                    <canvas id="qrcode3" width="200" height="200"></canvas>
+                    <div class="zoom-overlay">
+                      <i data-lucide="search-plus"></i>
+                    </div>
+                  </div>
+                  <p class="instructions">Présentez ce QR code à l'entrée</p>
+                </div>
+              </div>
+
+              <!-- Ticket Concert -->
+              <div class="ticket-card" data-ticket="4" data-event="concert">
+                <div class="event-details">
+                  <h2>Concert</h2>
+                  <p>
+                    <i data-lucide="map-pin"></i>
+                    <strong>Adresse:</strong> Palais des Congrès, 54000 Metz
+                  </p>
+                  <p>
+                    <i data-lucide="users"></i>
+                    <strong>Billet:</strong> 1 Adulte
+                  </p>
+                  <p>
+                    <i data-lucide="armchair"></i>
+                    <strong>Localisation:</strong> Parterre
+                  </p>
+                  <p>
+                    <i data-lucide="calendar"></i>
+                    <strong>Date:</strong> 25/01/2025 à 20h30
+                  </p>
+                </div>
+                <div class="qr-code-container">
+                  <div class="qr-code-wrapper">
+                    <canvas id="qrcode4" width="200" height="200"></canvas>
+                    <div class="zoom-overlay">
+                      <i data-lucide="search-plus"></i>
+                    </div>
+                  </div>
+                  <p class="instructions">Présentez ce QR code à l'entrée</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="downloadPDF">
+              <i data-lucide="download"></i> Télécharger PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="adherent_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Calendrier</span>
+      </a>
+      <a href="adherent_qrcode.html" class="nav-item active">
+        <i data-lucide="ticket"></i>
+        <span>Billets</span>
+      </a>
+      <a href="adherent_mesamis.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Amis</span>
+      </a>
+      <a href="adherent_notations.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Notation</span>
+      </a>
+      <a href="adherent_moncompte.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Modal pour QR Code zoomé - Structure améliorée -->
+    <div id="qrZoomModal" class="event-modal">
+      <div class="modal-content">
+        <div class="modal-title">
+          <i data-lucide="qr-code"></i>
+          <span><strong>QR Code du billet</strong></span>
+        </div>
+        <button class="close-modal">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="zoomed-qr-container">
+          <!-- QR code zoomé sera inséré ici -->
+        </div>
+        <div class="modal-footer">
+          <p class="instructions">
+            Présentez ce code à l'entrée de l'événement
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Initialisation de Lucide avec meilleure gestion d'erreur -->
+    <script>
+      // Assurez-vous que Lucide est bien chargé avant d'initialiser les icônes
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+            console.log("Icônes Lucide initialisées avec succès");
+          } else {
+            console.error("La bibliothèque Lucide n'a pas pu être chargée");
+          }
+        }, 100); // Léger délai pour être sûr que la bibliothèque est chargée
+      });
+    </script>
+    <!-- Inclusion du fichier JavaScript externe -->
+    <script src="../../js/pages/qrcode.js"></script>
+  </body>
+</html>

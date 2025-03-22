@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page de Notations</title>
+    <!-- Chemins CSS corrects -->
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="/css/pages/compteadherents/adherent_notations.css"
+    />
+    <!-- Alternative avec chemins relatifs si les chemins absolus ne fonctionnent pas -->
+    <!-- 
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link rel="stylesheet" href="../../css/pages/compteadherents/notations.css" />
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <!-- Ajout d'un script pour vérifier les erreurs CSS -->
+    <script>
+      window.addEventListener(
+        "error",
+        function (e) {
+          if (e.target.tagName === "LINK" && e.target.rel === "stylesheet") {
+            console.error("Erreur de chargement CSS:", e.target.href);
+          }
+        },
+        true
+      );
+    </script>
+    <!-- Ajouter un style inline pour les étoiles pour garantir la coloration -->
+    <style>
+      /* Style pour les étoiles qui résout le problème de coloration */
+      .rating label.active .star-icon {
+        color: #f26122 !important;
+      }
+      .rating label .star-icon {
+        color: #ccc;
+        font-size: 24px;
+        transition: color 0.3s ease;
+      }
+    </style>
+    <!-- Style pour corriger la coloration des étoiles Lucide -->
+    <style>
+      /* Style direct pour les icônes SVG de Lucide */
+      .rating label i svg {
+        stroke: #ccc;
+        fill: #ccc;
+        transition: stroke 0.3s, fill 0.3s;
+      }
+      .rating label.active i svg {
+        stroke: #f26122 !important;
+        fill: #f26122 !important;
+      }
+      /* Styles de fallback pour d'autres types d'étoiles */
+      .rating label .star-icon {
+        color: #ccc;
+      }
+      .rating label.active .star-icon {
+        color: #f26122 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation avec icônes Lucide -->
+        <ul class="menu-items">
+          <li>
+            <a href="adherent_evenement.html">
+              <i data-lucide="calendar"></i>
+              Calendrier
+            </a>
+          </li>
+          <li>
+            <a href="adherent_qrcode.html">
+              <i data-lucide="ticket"></i>
+              Mes billets
+            </a>
+          </li>
+          <li>
+            <a href="adherent_mesamis.html">
+              <i data-lucide="users"></i>
+              Mes amis
+            </a>
+          </li>
+          <li>
+            <a href="adherent_notations.html" class="active">
+              <i data-lucide="star"></i>
+              Notation
+            </a>
+          </li>
+          <li>
+            <a href="adherent_moncompte.html">
+              <i data-lucide="user"></i>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <div class="header">
+            <h1><i data-lucide="star"></i> Évaluation de l'événement</h1>
+          </div>
+
+          <form id="evaluation-form">
+            <!-- Sélecteur d'événement -->
+            <div class="event-selector">
+              <label for="event-select"
+                >Choisissez un événement à évaluer :</label
+              >
+              <select id="event-select" class="event-select">
+                <option value="" disabled selected>
+                  Sélectionner un événement
+                </option>
+                <option value="match-basket">
+                  Match de Basketball - 01/01/2025
+                </option>
+                <option value="match-foot">
+                  Match de Football - 15/01/2025
+                </option>
+                <option value="concert">Concert - 25/01/2025</option>
+              </select>
+            </div>
+
+            <!-- Section pour l'évaluation de l'événement -->
+            <div class="rating-category">
+              <h2><i data-lucide="calendar"></i> Évaluation de l'événement</h2>
+
+              <div class="rating-section">
+                <div class="rating-title">Ambiance générale</div>
+                <div class="rating">
+                  <span class="scale-label"
+                    >0 <span class="rating-desc">Insatisfaisante</span></span
+                  >
+                  <div class="rating-scale">
+                    <input
+                      type="radio"
+                      id="ambiance1"
+                      name="ambiance"
+                      value="1"
+                    />
+                    <label for="ambiance1">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance2"
+                      name="ambiance"
+                      value="2"
+                    />
+                    <label for="ambiance2">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance3"
+                      name="ambiance"
+                      value="3"
+                    />
+                    <label for="ambiance3">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance4"
+                      name="ambiance"
+                      value="4"
+                    />
+                    <label for="ambiance4">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance5"
+                      name="ambiance"
+                      value="5"
+                    />
+                    <label for="ambiance5">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance6"
+                      name="ambiance"
+                      value="6"
+                    />
+                    <label for="ambiance6">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance7"
+                      name="ambiance"
+                      value="7"
+                    />
+                    <label for="ambiance7">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance8"
+                      name="ambiance"
+                      value="8"
+                    />
+                    <label for="ambiance8">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance9"
+                      name="ambiance"
+                      value="9"
+                    />
+                    <label for="ambiance9">★</label>
+                    <input
+                      type="radio"
+                      id="ambiance10"
+                      name="ambiance"
+                      value="10"
+                    />
+                    <label for="ambiance10">★</label>
+                  </div>
+                  <span class="scale-label"
+                    >10 <span class="rating-desc">Excellente</span></span
+                  >
+                </div>
+              </div>
+
+              <div class="rating-section">
+                <div class="rating-title">Organisation et gestion du temps</div>
+                <div class="rating">
+                  <span class="scale-label"
+                    >0 <span class="rating-desc">Insatisfaisante</span></span
+                  >
+                  <div class="rating-scale">
+                    <input
+                      type="radio"
+                      id="organisation1"
+                      name="organisation"
+                      value="1"
+                    />
+                    <label for="organisation1">★</label>
+                    <input
+                      type="radio"
+                      id="organisation2"
+                      name="organisation"
+                      value="2"
+                    />
+                    <label for="organisation2">★</label>
+                    <input
+                      type="radio"
+                      id="organisation3"
+                      name="organisation"
+                      value="3"
+                    />
+                    <label for="organisation3">★</label>
+                    <input
+                      type="radio"
+                      id="organisation4"
+                      name="organisation"
+                      value="4"
+                    />
+                    <label for="organisation4">★</label>
+                    <input
+                      type="radio"
+                      id="organisation5"
+                      name="organisation"
+                      value="5"
+                    />
+                    <label for="organisation5">★</label>
+                    <input
+                      type="radio"
+                      id="organisation6"
+                      name="organisation"
+                      value="6"
+                    />
+                    <label for="organisation6">★</label>
+                    <input
+                      type="radio"
+                      id="organisation7"
+                      name="organisation"
+                      value="7"
+                    />
+                    <label for="organisation7">★</label>
+                    <input
+                      type="radio"
+                      id="organisation8"
+                      name="organisation"
+                      value="8"
+                    />
+                    <label for="organisation8">★</label>
+                    <input
+                      type="radio"
+                      id="organisation9"
+                      name="organisation"
+                      value="9"
+                    />
+                    <label for="organisation9">★</label>
+                    <input
+                      type="radio"
+                      id="organisation10"
+                      name="organisation"
+                      value="10"
+                    />
+                    <label for="organisation10">★</label>
+                  </div>
+                  <span class="scale-label"
+                    >10 <span class="rating-desc">Excellente</span></span
+                  >
+                </div>
+              </div>
+
+              <div class="rating-section">
+                <div class="rating-title">Propreté des locaux</div>
+                <div class="rating">
+                  <span class="scale-label"
+                    >0 <span class="rating-desc">Insatisfaisante</span></span
+                  >
+                  <div class="rating-scale">
+                    <input
+                      type="radio"
+                      id="proprete1"
+                      name="proprete"
+                      value="1"
+                    />
+                    <label for="proprete1">★</label>
+                    <input
+                      type="radio"
+                      id="proprete2"
+                      name="proprete"
+                      value="2"
+                    />
+                    <label for="proprete2">★</label>
+                    <input
+                      type="radio"
+                      id="proprete3"
+                      name="proprete"
+                      value="3"
+                    />
+                    <label for="proprete3">★</label>
+                    <input
+                      type="radio"
+                      id="proprete4"
+                      name="proprete"
+                      value="4"
+                    />
+                    <label for="proprete4">★</label>
+                    <input
+                      type="radio"
+                      id="proprete5"
+                      name="proprete"
+                      value="5"
+                    />
+                    <label for="proprete5">★</label>
+                    <input
+                      type="radio"
+                      id="proprete6"
+                      name="proprete"
+                      value="6"
+                    />
+                    <label for="proprete6">★</label>
+                    <input
+                      type="radio"
+                      id="proprete7"
+                      name="proprete"
+                      value="7"
+                    />
+                    <label for="proprete7">★</label>
+                    <input
+                      type="radio"
+                      id="proprete8"
+                      name="proprete"
+                      value="8"
+                    />
+                    <label for="proprete8">★</label>
+                    <input
+                      type="radio"
+                      id="proprete9"
+                      name="proprete"
+                      value="9"
+                    />
+                    <label for="proprete9">★</label>
+                    <input
+                      type="radio"
+                      id="proprete10"
+                      name="proprete"
+                      value="10"
+                    />
+                    <label for="proprete10">★</label>
+                  </div>
+                  <span class="scale-label"
+                    >10 <span class="rating-desc">Excellente</span></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Section pour l'évaluation des joueurs -->
+            <div class="rating-category">
+              <h2><i data-lucide="users"></i> Évaluation des joueurs</h2>
+
+              <div class="rating-section">
+                <div class="rating-title">Performance technique</div>
+                <div class="rating">
+                  <span class="scale-label"
+                    >0 <span class="rating-desc">Insuffisante</span></span
+                  >
+                  <div class="rating-scale">
+                    <input
+                      type="radio"
+                      id="performance1"
+                      name="performance"
+                      value="1"
+                    />
+                    <label for="performance1">★</label>
+                    <input
+                      type="radio"
+                      id="performance2"
+                      name="performance"
+                      value="2"
+                    />
+                    <label for="performance2">★</label>
+                    <input
+                      type="radio"
+                      id="performance3"
+                      name="performance"
+                      value="3"
+                    />
+                    <label for="performance3">★</label>
+                    <input
+                      type="radio"
+                      id="performance4"
+                      name="performance"
+                      value="4"
+                    />
+                    <label for="performance4">★</label>
+                    <input
+                      type="radio"
+                      id="performance5"
+                      name="performance"
+                      value="5"
+                    />
+                    <label for="performance5">★</label>
+                    <input
+                      type="radio"
+                      id="performance6"
+                      name="performance"
+                      value="6"
+                    />
+                    <label for="performance6">★</label>
+                    <input
+                      type="radio"
+                      id="performance7"
+                      name="performance"
+                      value="7"
+                    />
+                    <label for="performance7">★</label>
+                    <input
+                      type="radio"
+                      id="performance8"
+                      name="performance"
+                      value="8"
+                    />
+                    <label for="performance8">★</label>
+                    <input
+                      type="radio"
+                      id="performance9"
+                      name="performance"
+                      value="9"
+                    />
+                    <label for="performance9">★</label>
+                    <input
+                      type="radio"
+                      id="performance10"
+                      name="performance"
+                      value="10"
+                    />
+                    <label for="performance10">★</label>
+                  </div>
+                  <span class="scale-label"
+                    >10 <span class="rating-desc">Excellente</span></span
+                  >
+                </div>
+              </div>
+
+              <div class="rating-section">
+                <div class="rating-title">Esprit d'équipe</div>
+                <div class="rating">
+                  <span class="scale-label"
+                    >0 <span class="rating-desc">Insuffisant</span></span
+                  >
+                  <div class="rating-scale">
+                    <input type="radio" id="esprit1" name="esprit" value="1" />
+                    <label for="esprit1">★</label>
+                    <input type="radio" id="esprit2" name="esprit" value="2" />
+                    <label for="esprit2">★</label>
+                    <input type="radio" id="esprit3" name="esprit" value="3" />
+                    <label for="esprit3">★</label>
+                    <input type="radio" id="esprit4" name="esprit" value="4" />
+                    <label for="esprit4">★</label>
+                    <input type="radio" id="esprit5" name="esprit" value="5" />
+                    <label for="esprit5">★</label>
+                    <input type="radio" id="esprit6" name="esprit" value="6" />
+                    <label for="esprit6">★</label>
+                    <input type="radio" id="esprit7" name="esprit" value="7" />
+                    <label for="esprit7">★</label>
+                    <input type="radio" id="esprit8" name="esprit" value="8" />
+                    <label for="esprit8">★</label>
+                    <input type="radio" id="esprit9" name="esprit" value="9" />
+                    <label for="esprit9">★</label>
+                    <input
+                      type="radio"
+                      id="esprit10"
+                      name="esprit"
+                      value="10"
+                    />
+                    <label for="esprit10">★</label>
+                  </div>
+                  <span class="scale-label"
+                    >10 <span class="rating-desc">Excellent</span></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Soumettre <i data-lucide="send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="adherent_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Calendrier</span>
+      </a>
+      <a href="adherent_qrcode.html" class="nav-item">
+        <i data-lucide="ticket"></i>
+        <span>Billets</span>
+      </a>
+      <a href="adherent_mesamis.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Amis</span>
+      </a>
+      <a href="adherent_notations.html" class="nav-item active">
+        <i data-lucide="star"></i>
+        <span>Notation</span>
+      </a>
+      <a href="adherent_moncompte.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Utilisation du fichier JavaScript séparé -->
+    <script src="../../js/notations.js"></script>
+  </body>
+</html>

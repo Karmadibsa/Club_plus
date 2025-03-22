@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion d'Événement</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_editevenement.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_Connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="reservation_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <a href="reservation_evenement.html" class="active">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="reservation_membres.html">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_Connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="page-content-wrapper">
+          <div class="content-card">
+            <header class="main-header">
+              <div class="header-back">
+                <a href="reservation_evenement.html" class="back-link">
+                  <i data-lucide="arrow-left"></i> Retour aux événements
+                </a>
+              </div>
+              <h1 id="page-title">Créer un Nouvel Événement</h1>
+              <p class="subtitle" id="page-subtitle">
+                Complétez le formulaire ci-dessous pour créer un événement pour
+                les membres du club
+              </p>
+            </header>
+
+            <main>
+              <div class="create-event-form">
+                <!-- Section pour les informations de base -->
+                <section class="form-section">
+                  <h2 class="section-title">Informations générales</h2>
+                  <form id="event-form">
+                    <input
+                      type="hidden"
+                      id="event-id"
+                      name="eventId"
+                      value=""
+                    />
+                    <div class="form-group">
+                      <label for="event-name"
+                        >Nom de l'événement
+                        <span class="required">*</span></label
+                      >
+                      <input
+                        type="text"
+                        id="event-name"
+                        name="eventName"
+                        placeholder="Ex: Tournoi de Tennis Annuel"
+                        required
+                      />
+                      <span class="helper-text"
+                        >Nom qui sera affiché aux participants</span
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <label for="event-description"
+                        >Description <span class="required">*</span></label
+                      >
+                      <textarea
+                        id="event-description"
+                        name="eventDescription"
+                        rows="5"
+                        placeholder="Décrivez l'événement en détail..."
+                        required
+                      ></textarea>
+                      <span class="helper-text"
+                        >Décrivez l'événement, son objectif et son
+                        déroulement</span
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <label for="event-category"
+                        >Catégorie <span class="required">*</span></label
+                      >
+                      <select id="event-category" name="eventCategory" required>
+                        <option value="">
+                          -- Sélectionnez une catégorie --
+                        </option>
+                        <option value="sport">Sport</option>
+                        <option value="culture">Culture</option>
+                        <option value="loisir">Loisir</option>
+                        <option value="formation">Formation</option>
+                        <option value="reunion">Réunion</option>
+                        <option value="autre">Autre</option>
+                      </select>
+                    </div>
+                  </form>
+                </section>
+
+                <!-- Section pour la date et le lieu -->
+                <section class="form-section">
+                  <h2 class="section-title">Date et lieu</h2>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="event-date"
+                        >Date <span class="required">*</span></label
+                      >
+                      <input
+                        type="date"
+                        id="event-date"
+                        name="eventDate"
+                        required
+                      />
+                      <span class="helper-text">Date de l'événement</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="event-time"
+                        >Heure de début <span class="required">*</span></label
+                      >
+                      <input
+                        type="time"
+                        id="event-time"
+                        name="eventTime"
+                        required
+                      />
+                      <span class="helper-text"
+                        >Heure à laquelle commence l'événement</span
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <label for="event-end-time"
+                        >Heure de fin <span class="required">*</span></label
+                      >
+                      <input
+                        type="time"
+                        id="event-end-time"
+                        name="eventEndTime"
+                        required
+                      />
+                      <span class="helper-text"
+                        >Heure prévue de fin de l'événement</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="event-location"
+                      >Lieu <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="event-location"
+                      name="eventLocation"
+                      placeholder="Ex: Terrain principal, Salle polyvalente..."
+                      required
+                    />
+                    <span class="helper-text"
+                      >Précisez où se déroulera l'événement</span
+                    >
+                  </div>
+                </section>
+
+                <!-- Section pour les catégories de places -->
+                <section class="form-section">
+                  <h2 class="section-title">Catégories de places</h2>
+                  <div id="categories-container">
+                    <div class="category-item">
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="category-name-1"
+                            >Nom de la catégorie
+                            <span class="required">*</span></label
+                          >
+                          <input
+                            type="text"
+                            id="category-name-1"
+                            name="categoryName[]"
+                            placeholder="Ex: Standard, VIP, Enfant..."
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="category-capacity-1"
+                            >Nombre de places
+                            <span class="required">*</span></label
+                          >
+                          <input
+                            type="number"
+                            id="category-capacity-1"
+                            name="categoryCapacity[]"
+                            min="1"
+                            value="10"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="category-actions">
+                    <button
+                      type="button"
+                      class="btn btn-outline"
+                      id="add-category-btn"
+                    >
+                      <i data-lucide="plus-circle"></i>
+                      Ajouter une catégorie
+                    </button>
+                  </div>
+                  <div class="form-group total-capacity">
+                    <label>Capacité totale:</label>
+                    <span id="total-capacity-display">10</span> places
+                  </div>
+                </section>
+
+                <!-- Boutons d'action -->
+                <div class="actions-container">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="window.location.href='reservation_evenement.html'"
+                  >
+                    <i data-lucide="x"></i>
+                    Annuler
+                  </button>
+                  <button
+                    type="submit"
+                    form="event-form"
+                    class="btn btn-primary"
+                    id="submit-btn"
+                  >
+                    <i data-lucide="check"></i>
+                    Créer l'événement
+                  </button>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="reservation_dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="reservation_evenement.html" class="nav-item active">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="reservation_membres.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+    </nav>
+
+    <!-- Initialisation de Lucide et scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+          console.log("Icônes Lucide initialisées avec succès");
+        } else {
+          console.error("La bibliothèque Lucide n'a pas pu être chargée");
+        }
+
+        // Vérifier si on est en mode édition (présence d'un ID dans l'URL)
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get("id");
+
+        // Configurer la page selon le mode (création ou modification)
+        if (eventId) {
+          // Mode modification
+          document.getElementById("page-title").textContent =
+            "Modifier l'Événement";
+          document.getElementById("page-subtitle").textContent =
+            "Modifiez les informations de l'événement selon vos besoins";
+          document.getElementById("submit-btn").textContent =
+            "Enregistrer les modifications";
+          document.getElementById("event-id").value = eventId;
+
+          // Charger les données de l'événement
+          loadEventData(eventId);
+        } else {
+          // Mode création - déjà configuré par défaut
+          console.log("Mode création d'événement");
+        }
+
+        // Set minimum date to today for date inputs
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const yyyy = today.getFullYear();
+        const todayString = `${yyyy}-${mm}-${dd}`;
+
+        document.getElementById("event-date").min = todayString;
+
+        if (document.getElementById("event-registration-deadline")) {
+          document.getElementById("event-registration-deadline").min =
+            todayString;
+        }
+
+        // Category management
+        let categoryCounter = 1;
+        const categoriesContainer = document.getElementById(
+          "categories-container"
+        );
+        const addCategoryBtn = document.getElementById("add-category-btn");
+        const totalCapacityDisplay = document.getElementById(
+          "total-capacity-display"
+        );
+
+        // Add new category
+        addCategoryBtn.addEventListener("click", function () {
+          categoryCounter++;
+          const newCategory = document.createElement("div");
+          newCategory.className = "category-item";
+          newCategory.innerHTML = `
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category-name-${categoryCounter}">Nom de la catégorie <span class="required">*</span></label>
+                <input 
+                  type="text" 
+                  id="category-name-${categoryCounter}" 
+                  name="categoryName[]" 
+                  placeholder="Ex: Standard, VIP, Enfant..." 
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="category-capacity-${categoryCounter}">Nombre de places <span class="required">*</span></label>
+                <input 
+                  type="number" 
+                  id="category-capacity-${categoryCounter}" 
+                  name="categoryCapacity[]" 
+                  min="1" 
+                  value="10" 
+                  required
+                  class="capacity-input"
+                />
+              </div>
+              <div class="remove-category">
+                <button type="button" class="btn-remove-category" title="Supprimer cette catégorie">
+                  <i data-lucide="trash-2"></i>
+                </button>
+              </div>
+            </div>
+          `;
+          categoriesContainer.appendChild(newCategory);
+
+          // Initialize icon for the new remove button
+          lucide.createIcons();
+
+          // Add event listener to the new remove button
+          const removeButton = newCategory.querySelector(
+            ".btn-remove-category"
+          );
+          if (removeButton) {
+            removeButton.addEventListener("click", function () {
+              newCategory.remove();
+              updateTotalCapacity();
+            });
+          }
+
+          // Add event listener to the new capacity input
+          const newCapacityInput = newCategory.querySelector(".capacity-input");
+          if (newCapacityInput) {
+            newCapacityInput.addEventListener("input", updateTotalCapacity);
+          }
+
+          updateTotalCapacity();
+        });
+
+        // Initialize event listeners for capacity inputs
+        document
+          .querySelectorAll('.category-item input[type="number"]')
+          .forEach((input) => {
+            input.addEventListener("input", updateTotalCapacity);
+          });
+
+        // Calculate and update total capacity
+        function updateTotalCapacity() {
+          let total = 0;
+          document
+            .querySelectorAll('input[name="categoryCapacity[]"]')
+            .forEach((input) => {
+              total += parseInt(input.value) || 0;
+            });
+          totalCapacityDisplay.textContent = total;
+        }
+
+        // Handle form submission
+        const eventForm = document.getElementById("event-form");
+        if (eventForm) {
+          eventForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Basic validation
+            const name = document.getElementById("event-name").value.trim();
+            const date = document.getElementById("event-date").value;
+            const time = document.getElementById("event-time").value;
+            const endTime = document.getElementById("event-end-time").value;
+            const location = document
+              .getElementById("event-location")
+              .value.trim();
+            const category = document.getElementById("event-category").value;
+
+            if (!name || !date || !time || !endTime || !location || !category) {
+              alert("Veuillez remplir tous les champs obligatoires.");
+              return;
+            }
+
+            // Validate times
+            if (time >= endTime) {
+              alert("L'heure de fin doit être postérieure à l'heure de début.");
+              return;
+            }
+
+            // Collect categories data
+            const categories = [];
+            const categoryNames = document.querySelectorAll(
+              'input[name="categoryName[]"]'
+            );
+            const categoryCapacities = document.querySelectorAll(
+              'input[name="categoryCapacity[]"]'
+            );
+
+            for (let i = 0; i < categoryNames.length; i++) {
+              categories.push({
+                name: categoryNames[i].value.trim(),
+                capacity: parseInt(categoryCapacities[i].value) || 0,
+              });
+            }
+
+            // Get all form data
+            const eventData = {
+              name: name,
+              description: document
+                .getElementById("event-description")
+                .value.trim(),
+              category: category,
+              date: date,
+              startTime: time,
+              endTime: endTime,
+              location: location,
+              categories: categories,
+              totalCapacity: categories.reduce(
+                (sum, category) => sum + category.capacity,
+                0
+              ),
+            };
+
+            // Vérifier si c'est une création ou une modification
+            if (eventId) {
+              console.log(
+                `Modifications de l'événement ${eventId} enregistrées`
+              );
+              alert(
+                `Les modifications de l'événement ont été enregistrées avec succès !`
+              );
+            } else {
+              console.log("Nouvel événement créé");
+              alert("L'événement a été créé avec succès !");
+            }
+
+            // Redirection vers la liste des événements
+            window.location.href = "reservation_evenement.html";
+          });
+        }
+      });
+
+      // Fonction pour charger les données d'un événement existant
+      function loadEventData(eventId) {
+        // Normalement, on ferait un appel à une API ici
+        // Pour la démonstration, on va utiliser des données simulées selon l'ID
+
+        // Données factices pour la démonstration
+        const eventsData = {
+          1: {
+            name: "Tournoi de Tennis",
+            description:
+              "Grand tournoi annuel ouvert à tous les membres du club",
+            category: "sport",
+            date: "2023-06-15",
+            startTime: "14:00",
+            endTime: "18:00",
+            location: "Courts centraux",
+          },
+          2: {
+            name: "Soirée Gala",
+            description:
+              "Soirée annuelle pour célébrer les accomplissements du club",
+            category: "culture",
+            date: "2023-06-20",
+            startTime: "19:00",
+            endTime: "23:00",
+            location: "Grand Hall",
+          },
+        };
+
+        // Récupérer les données de l'événement spécifique
+        const eventData = eventsData[eventId];
+
+        if (eventData) {
+          // Remplir le formulaire avec les données de l'événement
+          document.getElementById("event-name").value = eventData.name;
+          document.getElementById("event-description").value =
+            eventData.description;
+          document.getElementById("event-category").value = eventData.category;
+          document.getElementById("event-date").value = eventData.date;
+          document.getElementById("event-time").value = eventData.startTime;
+          document.getElementById("event-end-time").value = eventData.endTime;
+          document.getElementById("event-location").value = eventData.location;
+
+          console.log(`Données de l'événement ${eventId} chargées`);
+        } else {
+          console.error(
+            `Aucune donnée trouvée pour l'événement avec l'ID ${eventId}`
+          );
+          alert(
+            "Événement non trouvé. Vous allez être redirigé vers la création d'événement."
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

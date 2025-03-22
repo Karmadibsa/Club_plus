@@ -1,0 +1,216 @@
+/* Styles for the about us page */
+
+.about-container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-header h1 {
+  color: var(--main-blue);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.about-header p {
+  color: var(--text-medium);
+  font-size: 1.1rem;
+}
+
+/* Mission section */
+.about-mission {
+  margin-bottom: 80px;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-content h2 {
+  color: var(--main-blue);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.mission-content p {
+  color: var(--text-medium);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Values section */
+.about-values {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.about-values h2 {
+  color: var(--main-blue);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.values-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.value-item {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  width: calc(50% - 15px);
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  background-color: var(--bg-light-gray);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.value-icon i {
+  font-size: 30px;
+  color: var(--main-orange);
+}
+
+.value-item h3 {
+  color: var(--main-blue);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.value-item p {
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+/* Testimonials */
+.about-testimonials {
+  margin-bottom: 60px;
+}
+
+.about-testimonials h2 {
+  color: var(--main-blue);
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.testimonial {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  width: calc(50% - 15px);
+  max-width: 500px;
+}
+
+.testimonial-content {
+  margin-bottom: 20px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.testimonial-content::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -10px;
+  font-size: 40px;
+  color: var(--main-orange);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.testimonial-content p {
+  color: var(--text-medium);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.testimonial-author h4 {
+  color: var(--main-blue);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.testimonial-author p {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .value-item,
+  .testimonial {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    margin: 50px auto;
+  }
+
+  .about-header h1,
+  .mission-content h2,
+  .about-values h2,
+  .about-testimonials h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header h1,
+  .mission-content h2,
+  .about-values h2,
+  .about-testimonials h2 {
+    font-size: 1.6rem;
+  }
+
+  .value-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .value-icon i {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion - Club Plus</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/pages/public/public_connexion.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-container">
+        <h1>Connexion</h1>
+
+        <form id="login-form" action="public_navigation.html">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Votre email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <div class="password-input">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Votre mot de passe"
+              />
+              <button
+                type="button"
+                id="toggle-password"
+                class="toggle-password"
+                aria-label="Afficher le mot de passe"
+              >
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Se <strong>souvenir</strong> de moi</label>
+            </div>
+            <a href="mot-de-passe.html" class="forgot-password"
+              ><strong>Mot de passe oublié?</strong></a
+            >
+          </div>
+
+          <button type="submit" class="login-btn">
+            <strong>Se connecter</strong>
+          </button>
+        </form>
+
+        <div class="signup-link">
+          <p>
+            Vous n'avez pas de
+            <a href="inscription.html"><strong>compte</strong></a
+            >?
+          </p>
+        </div>
+
+        <div class="home-link">
+          <a href="../../index.html" class="home-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Retour à l'accueil</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialiser les icônes Lucide
+      lucide.createIcons();
+
+      // Toggle password visibility
+      document
+        .getElementById("toggle-password")
+        .addEventListener("click", function () {
+          const passwordInput = document.getElementById("password");
+          const icon = this.querySelector("i");
+
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.setAttribute("data-lucide", "eye-off");
+          } else {
+            passwordInput.type = "password";
+            icon.setAttribute("data-lucide", "eye");
+          }
+
+          lucide.createIcons();
+        });
+    </script>
+  </body>
+</html>

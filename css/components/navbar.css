@@ -1,0 +1,429 @@
+/* Style de base pour la barre de navigation */
+.navbar {
+  background-color: var(--main-white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 5px 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  position: relative;
+}
+
+/* Style du logo */
+.navbar-logo img {
+  height: 45px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover img {
+  transform: scale(1.05);
+}
+
+/* Style du menu central */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-menu li {
+  margin: 0 5px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: var(--neutral-blue);
+  font-weight: 600;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+.navbar-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: var(--main-orange);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+  border-radius: 10px;
+}
+
+.navbar-menu a:hover {
+  color: var(--main-orange);
+}
+
+.navbar-menu a:hover::after {
+  width: 70%;
+  opacity: 1;
+}
+
+/* Style des boutons à droite */
+.navbar-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.navbar-buttons .btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: transparent;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+}
+
+/* Groupe les boutons Club et Adherents */
+.navbar-buttons .btn:nth-child(1),
+.navbar-buttons .btn:nth-child(2) {
+  margin: 0 -1px;
+  width: 140px;
+  padding: 10px 0;
+}
+
+/* Bouton Club - ORANGE */
+.navbar-buttons .btn:nth-child(1) {
+  background-color: var(--main-orange);
+  color: var(--main-white);
+  border: 2px solid var(--main-orange);
+  border-radius: 50px 0 0 50px;
+  z-index: 3;
+}
+
+.navbar-buttons .btn:nth-child(1):hover {
+  background-color: transparent;
+  color: var(--main-orange);
+  border-color: var(--main-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(242, 97, 34, 0.3);
+  z-index: 4;
+}
+
+/* Bouton Adherents - ORANGE aussi */
+.navbar-buttons .btn:nth-child(2) {
+  background-color: var(--main-orange);
+  color: var(--main-white);
+  border: 2px solid var(--main-orange);
+  border-radius: 0 50px 50px 0;
+  z-index: 2;
+}
+
+.navbar-buttons .btn:nth-child(2):hover {
+  background-color: transparent;
+  color: var(--main-orange);
+  border-color: var(--main-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(242, 97, 34, 0.3);
+  z-index: 4;
+}
+
+/* Bouton Se Connecter - BLEU */
+.navbar-buttons .btn:nth-child(3) {
+  background-color: var(--main-blue);
+  color: var(--main-white);
+  border: 2px solid var(--main-blue);
+  border-radius: 50px;
+  margin-left: 10px;
+}
+
+.navbar-buttons .btn:nth-child(3):hover {
+  background-color: transparent;
+  color: var(--main-blue);
+  border-color: var(--main-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 103, 217, 0.3);
+}
+
+/* Effet de brillance sur tous les boutons */
+.navbar-buttons .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.navbar-buttons .btn:hover::before {
+  left: 100%;
+}
+
+/* Menu burger styles */
+.menu-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+}
+
+.menu-burger span {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.menu-burger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menu-burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-burger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* MENU MOBILE */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--main-white);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Conteneur central */
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  max-width: 300px;
+  margin: 0 auto;
+  gap: 25px;
+  padding: 20px 0;
+}
+
+/* Bouton de fermeture */
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--main-orange);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 3px 8px rgba(242, 97, 34, 0.25);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.mobile-menu-close:hover {
+  transform: scale(1.05);
+  background: var(--main-blue);
+}
+
+/* Navigation links */
+.mobile-menu .navbar-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu .compact-links-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-menu .compact-links-group li {
+  width: 100%;
+  margin: 0;
+}
+
+.mobile-menu .navbar-menu a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 1rem;
+  color: var(--neutral-blue);
+  background: white;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu .navbar-menu a:hover {
+  background-color: rgba(242, 97, 34, 0.08);
+  color: var(--main-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons - VERTICAL LAYOUT */
+.mobile-menu .navbar-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-menu .navbar-buttons .btn {
+  width: 100%;
+  padding: 14px 20px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  margin: 0;
+}
+
+/* Bouton Club */
+.mobile-menu .navbar-buttons .btn:nth-child(1) {
+  background-color: var(--main-orange);
+  color: white;
+  border-color: var(--main-orange);
+}
+
+/* Bouton Adherents */
+.mobile-menu .navbar-buttons .btn:nth-child(2) {
+  background-color: var(--main-orange);
+  color: white;
+  border-color: var(--main-orange);
+  opacity: 0.95;
+}
+
+/* Bouton Se connecter */
+.mobile-menu .navbar-buttons .btn:nth-child(3) {
+  background-color: var(--main-blue);
+  color: white;
+  border-color: var(--main-blue);
+}
+
+/* Hover effects */
+.mobile-menu .navbar-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+  background-color: transparent;
+}
+
+.mobile-menu .navbar-buttons .btn:nth-child(1):hover,
+.mobile-menu .navbar-buttons .btn:nth-child(2):hover {
+  color: var(--main-orange);
+}
+
+.mobile-menu .navbar-buttons .btn:nth-child(3):hover {
+  color: var(--main-blue);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    position: relative;
+  }
+
+  .menu-burger {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .navbar-menu,
+  .navbar-buttons {
+    display: none;
+  }
+}

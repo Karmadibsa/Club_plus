@@ -1,0 +1,46 @@
+/* Styles communs pour tout le site */
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-medium-gray);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+p {
+  font-family: var(--font-family);
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--main-blue);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--main-orange);
+}
+
+button,
+.btn {
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-family);
+}

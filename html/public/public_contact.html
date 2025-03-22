@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/base/common.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/footer.css" />
+    <link rel="stylesheet" href="../../css/pages/public/public_contact.css" />
+    <script src="../../js/components/navbar.js" defer></script>
+    <title>Club Plus - Contact</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- Ajoutez le menu burger -->
+      <div class="menu-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navbar-container">
+        <!-- Logo à gauche -->
+        <div class="navbar-logo">
+          <a href="../../index.html">
+            <img
+              src="../../assets/images/LogoClubPlussansfond.png"
+              alt="Logo"
+            />
+          </a>
+        </div>
+
+        <!-- Boutons de navigation au centre -->
+        <ul class="navbar-menu">
+          <li><a href="../../index.html">Accueil</a></li>
+          <li><a href="public_aPropos.html">À propos</a></li>
+          <li><a href="public_tarifs.html">Tarifs</a></li>
+          <li><a href="public_contact.html">Contact</a></li>
+        </ul>
+
+        <!-- Boutons d'inscription/connexion à droite -->
+        <div class="navbar-buttons">
+          <a href="public_inscriptionClub.html" class="btn">Club</a>
+          <a href="public_inscriptionMembres.html" class="btn">Adhérents</a>
+          <a href="public_connexion.html" class="btn">Se connecter</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="contact-container">
+      <div class="contact-header">
+        <h1>Contactez-nous</h1>
+        <p>Nous sommes à votre écoute pour toute question ou suggestion</p>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Notre adresse</h3>
+              <p>123 Rue de l'exemple, 75000 Paris</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h3>Téléphone</h3>
+              <p>+33 1 23 45 67 89</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <p>contact@clubplus.fr</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h3>Heures d'ouverture</h3>
+              <p>Lun-Ven: 9h-18h</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Sujet</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <div class="footer-nav">
+          <a href="public_aPropos.html">A propos</a>
+          <a href="public_tarifs.html">Tarifs</a>
+          <a href="public_contact.html">Contact</a>
+        </div>
+        <div class="footer-logo">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+          />
+          <p>CompanyName 2024. All rights reserved.</p>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

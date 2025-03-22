@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réservation Événements Adhérents</title>
+    <!-- Ajout des liens CSS externes -->
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadherents/adherent_reservation.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/adherent_reservation.css" />
+    -->
+  </head>
+  <body>
+    <div class="container">
+      <a href="adherent_evenement.html" class="back-btn">
+        <span class="back-arrow">&#8592;</span> Retour au calendrier
+      </a>
+
+      <h1>Réservation d'Événement</h1>
+
+      <div class="event-details">
+        <div class="event-name">Nom de l'événement</div>
+        <div class="event-info">
+          <div class="info-item">
+            <span class="info-label">Lieu:</span>
+            <span class="info-value">Paris</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Date:</span>
+            <span class="info-value">15 mars 2025</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Places disponibles:</span>
+            <span class="info-value">42</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reservation-form">
+        <div class="places-question">Sélectionnez votre catégorie</div>
+
+        <div class="reservation-notice">
+          <p>
+            Attention : une seule réservation est possible à la fois par
+            adhérent et maximum deux places par événement.
+          </p>
+        </div>
+
+        <form action="adherent_reservationreussi.html">
+          <div class="categories">
+            <div class="category-item">
+              <input
+                type="radio"
+                id="cat1"
+                name="category"
+                value="category1"
+                required
+              />
+              <label for="cat1" class="category-label">
+                <div class="category-name">Catégorie 1 - Standard</div>
+              </label>
+            </div>
+
+            <div class="category-item">
+              <input type="radio" id="cat2" name="category" value="category2" />
+              <label for="cat2" class="category-label">
+                <div class="category-name">Catégorie 2 - Premium</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Réserver</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Fonction pour récupérer les paramètres de l'URL
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        const results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Fonction pour remplir les détails de l'événement
+      document.addEventListener("DOMContentLoaded", function () {
+        // Récupérer les paramètres
+        const eventName = getUrlParameter("event");
+        const eventDate = getUrlParameter("date");
+        const eventTime = getUrlParameter("time");
+
+        // Mettre à jour les éléments de la page avec les données de l'événement
+        if (eventName) {
+          document.querySelector(".event-name").textContent = eventName;
+        }
+
+        if (eventDate) {
+          const dateElements = document.querySelectorAll(".info-value");
+          // Trouver l'élément date et le mettre à jour
+          dateElements.forEach((element) => {
+            if (
+              element.previousElementSibling &&
+              element.previousElementSibling.textContent.includes("Date")
+            ) {
+              element.textContent = eventDate;
+            }
+          });
+        }
+
+        // Vous pouvez ajouter d'autres informations si nécessaire
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,385 @@
+/* Styles for the pricing page */
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.pricing-header h1 {
+  color: var(--main-blue);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.pricing-header p {
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Pricing toggle switch */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.toggle-option {
+  font-size: 1rem;
+  color: var(--text-medium);
+  margin: 0 10px;
+}
+
+.toggle-option.active {
+  color: var(--main-blue);
+  font-weight: 600;
+}
+
+.discount {
+  background-color: var(--main-orange);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-medium-gray);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--main-orange);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--main-orange);
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Pricing plans */
+.pricing-plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.pricing-plan {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+  width: 350px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.pricing-plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-plan.popular {
+  border: 2px solid var(--main-orange);
+  transform: scale(1.05);
+}
+
+.pricing-plan.popular:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  background-color: var(--main-orange);
+  color: white;
+  padding: 8px 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+}
+
+.plan-header {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plan-header h3 {
+  color: var(--main-blue);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.plan-price {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.price.annual {
+  display: none;
+}
+
+.pricing-plans.annual .price.monthly {
+  display: none;
+}
+
+.pricing-plans.annual .price.annual {
+  display: inline;
+}
+
+.period {
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+
+.plan-header p {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+}
+
+.plan-features {
+  padding: 30px;
+}
+
+.plan-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-features li {
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.plan-features li i {
+  color: var(--success);
+  margin-right: 10px;
+  font-size: 0.9rem;
+  width: 20px;
+}
+
+.plan-features li.disabled {
+  color: var(--text-light);
+}
+
+.plan-features li.disabled i {
+  color: var(--text-light);
+}
+
+.plan-cta {
+  padding: 0 30px 30px;
+  text-align: center;
+}
+
+.plan-btn {
+  display: inline-block;
+  background-color: var(--main-orange);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.plan-btn:hover {
+  background-color: #e05016;
+}
+
+/* FAQ Section */
+.pricing-faq {
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.pricing-faq h2 {
+  text-align: center;
+  color: var(--main-blue);
+  margin-bottom: 30px;
+}
+
+.faq-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  margin: 0;
+}
+
+.faq-question i {
+  color: var(--main-blue);
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 20px 20px;
+  max-height: 200px;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer p {
+  color: var(--text-medium);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 1100px) {
+  .pricing-plans {
+    gap: 20px;
+  }
+
+  .pricing-plan {
+    width: 320px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pricing-plan.popular {
+    transform: scale(1);
+  }
+
+  .pricing-plan.popular:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-container {
+    margin: 50px auto;
+  }
+
+  .pricing-header h1 {
+    font-size: 2rem;
+  }
+
+  .pricing-plans {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-plan {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .faq-question h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .plan-header {
+    padding: 25px 20px;
+  }
+
+  .plan-features,
+  .plan-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .price {
+    font-size: 2.2rem;
+  }
+}

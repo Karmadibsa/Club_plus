@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation - Club Plus</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/public/public_navigation.css"
+    />
+    <!-- Import Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Bienvenue sur Club Plus</h1>
+      <p style="text-align: center; margin-bottom: 30px">
+        Sélectionnez votre interface de navigation
+      </p>
+
+      <div class="navigation-cards">
+        <!-- Card pour Administrateur -->
+        <a href="../compteadmin/admin_dashboard.html" class="nav-card admin">
+          <div class="icon-container">
+            <i data-lucide="shield" size="32"></i>
+          </div>
+          <h2>Administrateur</h2>
+          <p>Accédez à toutes les fonctionnalités d'administration du club</p>
+          <span class="btn btn-admin">Accéder</span>
+        </a>
+
+        <!-- Card pour Responsable Réservation -->
+        <a
+          href="../comptereservation/reservation_dashboard.html"
+          class="nav-card reservation"
+        >
+          <div class="icon-container">
+            <i data-lucide="calendar" size="32"></i>
+          </div>
+          <h2>Réservation</h2>
+          <p>Gérez les événements et les réservations du club</p>
+          <span class="btn btn-reservation">Accéder</span>
+        </a>
+
+        <!-- Card pour Adhérent -->
+        <a
+          href="../compteadherents/adherent_evenement.html"
+          class="nav-card adherent"
+        >
+          <div class="icon-container">
+            <i data-lucide="users" size="32"></i>
+          </div>
+          <h2>Adhérent</h2>
+          <p>Consultez les événements et gérez votre compte membre</p>
+          <span class="btn btn-adherent">Accéder</span>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        setTimeout(function () {
+          if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+            console.log("Icônes Lucide initialisées avec succès");
+          } else {
+            console.error("La bibliothèque Lucide n'a pas pu être chargée");
+          }
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

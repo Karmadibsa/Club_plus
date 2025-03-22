@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/base/common.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/public/public_inscriptionMembres.css"
+    />
+    <title>Inscription Membres</title>
+  </head>
+  <body>
+    <div class="container">
+      <a href="../../index.html" class="return-link">
+        <i class="arrow-left">←</i> Retour
+      </a>
+      <h1>Inscription <strong>Membres</strong></h1>
+      <form id="memberForm">
+        <!-- Prénom et Nom sur la même ligne -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName"><strong>Prénom</strong></label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Votre prénom"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastName"><strong>Nom</strong></label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Votre nom"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email"><strong>Email</strong></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Votre email"
+            required
+          />
+        </div>
+
+        <!-- Mot de passe et confirmation -->
+        <div class="form-group">
+          <label for="password"><strong>Mot de passe</strong></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Votre mot de passe"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirmer le mot de passe</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirmez votre mot de passe"
+            required
+          />
+        </div>
+
+        <!-- Numéro de rue et Adresse sur la même ligne -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="streetNumber">Numéro de rue</label>
+            <input
+              type="text"
+              id="streetNumber"
+              name="streetNumber"
+              placeholder="Numéro de rue"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Votre adresse"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Code postal et Ville sur la même ligne -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postalCode">Code postal</label>
+            <input
+              type="text"
+              id="postalCode"
+              name="postalCode"
+              placeholder="Code postal"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="Votre ville"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fileUpload">Télécharger un fichier</label>
+          <input type="file" id="fileUpload" name="fileUpload" />
+        </div>
+
+        <!-- Avant le bouton d'inscription -->
+        <div class="form-group form-check">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms"
+            >J'ai lu et j'accepte les <strong>règlements</strong></label
+          >
+        </div>
+
+        <!-- Bouton d'inscription -->
+        <button type="submit" class="btn"><strong>S'inscrire</strong></button>
+      </form>
+    </div>
+  </body>
+</html>

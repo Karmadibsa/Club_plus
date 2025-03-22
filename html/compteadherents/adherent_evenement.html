@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS Files - Chemins corrigés -->
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/base/common.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadherents/adherent_evenements.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/base/common.css" />
+    <link rel="stylesheet" href="/css/components/navbar.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/evenementsAdherents.css" />
+    -->
+    <title>Calendrier du Club Sportif</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- La div user-profile est retirée -->
+
+        <!-- Sidebar Navigation mise à jour -->
+        <ul class="menu-items">
+          <li>
+            <a href="adherent_evenement.html" class="active">
+              <i data-lucide="calendar"></i>
+              Calendrier
+            </a>
+          </li>
+          <li>
+            <a href="adherent_qrcode.html">
+              <i data-lucide="ticket"></i>
+              Mes billets
+            </a>
+          </li>
+          <li>
+            <a href="adherent_mesamis.html">
+              <i data-lucide="users"></i>
+              Mes amis
+            </a>
+          </li>
+          <li>
+            <a href="adherent_notations.html">
+              <i data-lucide="star"></i>
+              Notation
+            </a>
+          </li>
+          <li>
+            <a href="adherent_moncompte.html">
+              <i data-lucide="user"></i>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+      <div class="container-page">
+        <!-- Calendar Header -->
+        <div class="calendar-header">
+          <h2>
+            <i data-lucide="calendar-days"></i>
+            <strong>Mars 2025</strong>
+          </h2>
+          <div class="calendar-navigation">
+            <button class="nav-button">
+              <i data-lucide="chevron-left"></i>
+              <strong>Février</strong>
+            </button>
+            <button class="nav-button">
+              <strong>Avril</strong>
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Jours de la semaine -->
+        <div class="calendar-days">
+          <div class="weekday"><strong>Lundi</strong></div>
+          <div class="weekday"><strong>Mardi</strong></div>
+          <div class="weekday"><strong>Mercredi</strong></div>
+          <div class="weekday"><strong>Jeudi</strong></div>
+          <div class="weekday"><strong>Vendredi</strong></div>
+          <div class="weekday"><strong>Samedi</strong></div>
+          <div class="weekday"><strong>Dimanche</strong></div>
+        </div>
+
+        <div class="calendar">
+          <!-- Derniers jours de février -->
+          <div class="day other-month">
+            <div class="date">24</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">25</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">26</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">27</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">28</div>
+          </div>
+          <!-- Mars -->
+          <div class="day">
+            <div class="date">
+              1
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time"><strong>18h</strong></span>
+                <span class="event-title"><strong>Entraînement</strong></span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">2</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              3
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">20h</span>
+                <span class="event-title">Réunion du club</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">4</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              5
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">10h</span>
+                <span class="event-title">Préparation physique</span>
+              </a>
+              <a href="#" class="event">
+                <span class="event-time">14h</span>
+                <span class="event-title">Réunion tactique</span>
+              </a>
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+              <a href="#" class="event">
+                <span class="event-time">20h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">6</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              7
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">15h</span>
+                <span class="event-title">Match à domicile</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">
+              8
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">9</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              10
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">19h</span>
+                <span class="event-title">Préparation physique</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">11</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              12
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">13</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              14
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">16h</span>
+                <span class="event-title">Match à l'extérieur</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">
+              15
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">9h</span>
+                <span class="event-title">Petit-déjeuner équipe</span>
+              </a>
+              <a href="#" class="event">
+                <span class="event-time">15h</span>
+                <span class="event-title">Match amical</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">16</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              17
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">20h</span>
+                <span class="event-title">Réunion du club</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">18</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              19
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">20</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              21
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">
+              22
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">23</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              24
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">19h</span>
+                <span class="event-title">Préparation physique</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">25</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              26
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">27</div>
+          </div>
+          <div class="day">
+            <div class="date">
+              28
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">15h</span>
+                <span class="event-title">Match à domicile</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">
+              29
+              <div class="badge-container"></div>
+            </div>
+            <div class="events-container">
+              <a href="#" class="event">
+                <span class="event-time">18h</span>
+                <span class="event-title">Entraînement</span>
+              </a>
+            </div>
+          </div>
+          <div class="day">
+            <div class="date">30</div>
+          </div>
+          <div class="day">
+            <div class="date">31</div>
+          </div>
+          <!-- Premiers jours d'avril -->
+          <div class="day other-month">
+            <div class="date">1</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">2</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">3</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">4</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">5</div>
+          </div>
+          <div class="day other-month">
+            <div class="date">6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modale pour les détails d'un événement -->
+    <div class="event-modal">
+      <div class="modal-content">
+        <div class="modal-title">
+          <i data-lucide="calendar-check"></i>
+          <span><strong>Détails de l'événement</strong></span>
+        </div>
+        <button class="close-modal">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="event-details">
+          <p>
+            <i data-lucide="calendar"></i>
+            <strong>Date:</strong>
+            <span class="event-date"></span>
+          </p>
+          <p>
+            <i data-lucide="clock"></i>
+            <strong>Heure:</strong>
+            <span class="event-time-detail"></span>
+          </p>
+          <p>
+            <i data-lucide="info"></i>
+            <strong>Événement:</strong>
+            <span class="event-title-detail"></span>
+          </p>
+          <p>
+            <i data-lucide="align-left"></i>
+            <strong>Description:</strong>
+            <span class="event-description"
+              >Description détaillée de l'événement...</span
+            >
+          </p>
+        </div>
+        <div class="event-actions">
+          <button class="modal-button secondary">
+            <i data-lucide="x"></i>
+            Annuler
+          </button>
+          <a
+            href="adherent_reservation.html"
+            class="modal-button"
+            id="inscription-button"
+            style="text-decoration: none; display: inline-block"
+            onmouseover="this.style.backgroundColor='var(--main-blue)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';"
+            onmouseout="this.style.backgroundColor='var(--main-orange)'; this.style.transform=''; this.style.boxShadow='';"
+          >
+            <i data-lucide="user-plus"></i>
+            <strong>S'inscrire</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modale pour les événements d'un jour - Structure corrigée -->
+    <div class="day-events-modal">
+      <div class="day-events-content">
+        <div class="modal-title">
+          <i data-lucide="calendar-clock"></i>
+          <span>Événements du jour</span>
+        </div>
+        <button class="close-modal">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="day-events-list">
+          <!-- Les événements seront injectés ici par JavaScript -->
+        </div>
+        <div class="event-actions">
+          <button class="modal-button secondary close-day-modal">
+            <i data-lucide="x"></i>
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile - mise à jour -->
+    <nav class="mobile-nav">
+      <a href="adherent_evenement.html" class="nav-item active">
+        <i data-lucide="calendar"></i>
+        <span>Calendrier</span>
+      </a>
+      <a href="adherent_qrcode.html" class="nav-item">
+        <i data-lucide="ticket"></i>
+        <span>Billets</span>
+      </a>
+      <a href="adherent_mesamis.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Amis</span>
+      </a>
+      <a href="adherent_notations.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Notation</span>
+      </a>
+      <a href="adherent_moncompte.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Scripts - Le bon ordre est crucial -->
+    <script>
+      // Remplacer l'initialisation simple par une version avec gestion d'erreur
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+            console.log("Icônes Lucide initialisées avec succès");
+          } else {
+            console.error("La bibliothèque Lucide n'a pas pu être chargée");
+          }
+        }, 100); // Léger délai pour être sûr que la bibliothèque est chargée
+      });
+    </script>
+    <script src="../../js/components/calendar.js"></script>
+    <script src="../../js/components/eventModal.js"></script>
+    <script>
+      // Script pour gérer la redirection vers la page de réservation
+      document.addEventListener("DOMContentLoaded", function () {
+        const inscriptionButton = document.getElementById("inscription-button");
+
+        inscriptionButton.addEventListener("click", function (e) {
+          e.preventDefault(); // Empêcher le comportement par défaut du lien
+
+          // Récupérer les informations de l'événement depuis la modale
+          const eventTitle = document.querySelector(
+            ".event-title-detail"
+          ).textContent;
+          const eventDate = document.querySelector(".event-date").textContent;
+          const eventTime =
+            document.querySelector(".event-time-detail").textContent;
+
+          // Construire l'URL avec les paramètres
+          const reservationUrl = `adherent_reservation.html?event=${encodeURIComponent(
+            eventTitle
+          )}&date=${encodeURIComponent(eventDate)}&time=${encodeURIComponent(
+            eventTime
+          )}`;
+
+          // Rediriger vers la page de réservation
+          window.location.href = reservationUrl;
+          return false; // Assurer que la redirection fonctionne
+        });
+      });
+    </script>
+  </body>
+</html>

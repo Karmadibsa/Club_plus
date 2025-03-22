@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Compte</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadherents/adherent_moncompte.css"
+    />
+    <!-- Alternative avec chemins absolus -->
+    <!-- 
+    <link rel="stylesheet" href="/css/base/root.css" />
+    <link rel="stylesheet" href="/css/components/sidebar.css" />
+    <link rel="stylesheet" href="/css/pages/compteadherents/moncompte.css" />
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation mise à jour -->
+        <ul class="menu-items">
+          <li>
+            <a href="adherent_evenement.html">
+              <i data-lucide="calendar"></i>
+              Calendrier
+            </a>
+          </li>
+          <li>
+            <a href="adherent_qrcode.html">
+              <i data-lucide="ticket"></i>
+              Mes billets
+            </a>
+          </li>
+          <li>
+            <a href="adherent_mesamis.html">
+              <i data-lucide="users"></i>
+              Mes amis
+            </a>
+          </li>
+          <li>
+            <a href="adherent_notations.html">
+              <i data-lucide="star"></i>
+              Notation
+            </a>
+          </li>
+          <li>
+            <a href="adherent_moncompte.html" class="active">
+              <i data-lucide="user"></i>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="account-container">
+          <div class="account-header">
+            <h1><i data-lucide="user-cog"></i> Mon Compte</h1>
+          </div>
+
+          <div class="section-cards">
+            <div class="account-section card-section">
+              <div class="section-header">
+                <h2><i data-lucide="user"></i> Informations personnelles</h2>
+                <p class="section-description">
+                  Vos informations personnelles principales
+                </p>
+              </div>
+
+              <div class="card-content">
+                <div class="form-row">
+                  <div class="form-group third">
+                    <label for="firstname">Prénom</label>
+                    <input
+                      type="text"
+                      id="firstname"
+                      name="firstname"
+                      value="John"
+                    />
+                  </div>
+                  <div class="form-group third">
+                    <label for="lastname">Nom</label>
+                    <input
+                      type="text"
+                      id="lastname"
+                      name="lastname"
+                      value="Doe"
+                    />
+                  </div>
+                  <div class="form-group third">
+                    <label for="birthdate">Date de naissance</label>
+                    <input
+                      type="date"
+                      id="birthdate"
+                      name="birthdate"
+                      value="2005-01-01"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value="john.doe@example.com"
+                    />
+                  </div>
+                  <div class="form-group half">
+                    <label for="phone">Téléphone</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value="+33 6 12 34 56 78"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="account-section card-section">
+              <div class="section-header">
+                <h2><i data-lucide="map-pin"></i> Adresse</h2>
+                <p class="section-description">
+                  Votre adresse postale complète
+                </p>
+              </div>
+
+              <div class="card-content">
+                <div class="form-row">
+                  <div class="form-group quarter">
+                    <label for="street-number">N°</label>
+                    <input
+                      type="text"
+                      id="street-number"
+                      name="street-number"
+                      value="123"
+                    />
+                  </div>
+                  <div class="form-group three-quarters">
+                    <label for="street">Rue</label>
+                    <input
+                      type="text"
+                      id="street"
+                      name="street"
+                      value="Rue de Paris"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="postal-code">Code postal</label>
+                    <input
+                      type="text"
+                      id="postal-code"
+                      name="postal-code"
+                      value="75000"
+                    />
+                  </div>
+                  <div class="form-group half">
+                    <label for="city">Ville</label>
+                    <input type="text" id="city" name="city" value="Paris" />
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button class="btn btn-primary">
+                    <i data-lucide="save"></i> Mettre à jour mes informations
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suppression du conteneur "actions-container" qui était ici -->
+
+          <div class="account-section card-section">
+            <div class="section-header">
+              <h2><i data-lucide="lock"></i> Changer le mot de passe</h2>
+              <p class="section-description">
+                Mettez à jour votre mot de passe pour sécuriser votre compte
+              </p>
+            </div>
+
+            <div class="card-content">
+              <div class="form-group">
+                <label for="current-password">Mot de passe actuel</label>
+                <input
+                  type="password"
+                  id="current-password"
+                  name="current-password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-password">Nouveau mot de passe</label>
+                <input type="password" id="new-password" name="new-password" />
+              </div>
+              <div class="form-group">
+                <label for="confirm-password">Confirmer le mot de passe</label>
+                <input
+                  type="password"
+                  id="confirm-password"
+                  name="confirm-password"
+                />
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-secondary">
+                  <i data-lucide="key"></i> Changer le mot de passe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile - mise à jour -->
+    <nav class="mobile-nav">
+      <a href="adherent_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Calendrier</span>
+      </a>
+      <a href="adherent_qrcode.html" class="nav-item">
+        <i data-lucide="ticket"></i>
+        <span>Billets</span>
+      </a>
+      <a href="adherent_mesamis.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Amis</span>
+      </a>
+      <a href="adherent_notations.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Notation</span>
+      </a>
+      <a href="adherent_moncompte.html" class="nav-item active">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Initialisation de Lucide avec meilleure gestion d'erreur -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+            console.log("Icônes Lucide initialisées avec succès");
+          } else {
+            console.error("La bibliothèque Lucide n'a pas pu être chargée");
+          }
+        }, 100); // Léger délai pour être sûr que la bibliothèque est chargée
+      });
+    </script>
+    <script src="../../js/pages/moncompte.js"></script>
+  </body>
+</html>

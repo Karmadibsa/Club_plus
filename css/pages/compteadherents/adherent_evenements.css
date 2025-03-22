@@ -1,0 +1,995 @@
+/* Variables globales */
+:root {
+  --main-orange-rgb: 230, 126, 34;
+  --day-height: 100px; /* Réduit de 120px à 100px pour optimiser l'espace vertical */
+  --day-min-width: 150px;
+  --event-font-size: 11px;
+  --scrollbar-width: 4px;
+  --calendar-gap: 8px;
+  --modal-border-radius: 24px;
+  --modal-padding: 35px;
+  --modal-background: rgba(255, 255, 255, 0.95);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 3px 8px rgba(0, 0, 0, 0.24);
+  --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.35);
+  --transition-default: all 0.3s ease;
+}
+
+/* Style global */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+/* Layout principal */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  max-height: 100vh; /* Assure que le layout principal ne dépasse pas la hauteur de l'écran */
+}
+
+/* Conteneur principal */
+.container-page {
+  margin-left: 300px; /* Augmenté de 200px à 250px pour éviter la superposition */
+  width: calc(
+    100%
+  ); /* Ajusté en conséquence pour maintenir la largeur totale */
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 15px; /* Réduit de 20px à 15px pour gagner de l'espace vertical */
+  max-height: 100vh;
+  overflow-y: auto; /* Ajout de la possibilité de défilement vertical */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin: 10px 0;
+  font-size: 1.5em;
+}
+
+/* Calendrier et navigation */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Réduit de 10px à 5px */
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+
+.calendar-header h2 {
+  font-size: 1.8em;
+  color: var(--main-blue);
+  margin: 0;
+}
+
+.calendar-navigation {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button {
+  background: var(--main-orange);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition-default);
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: var(--main-blue);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 5px; /* Réduit de 8px à 5px */
+}
+
+.weekday {
+  text-align: center;
+  font-weight: bold;
+  color: var(--main-blue);
+  padding: 5px;
+}
+
+/* Calendar grid */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(
+    6,
+    minmax(90px, 1fr)
+  ); /* Utilisation de minmax pour assurer une taille minimale */
+  gap: var(--calendar-gap);
+  flex: 1;
+  height: auto; /* Remplace calc(100vh - 120px) pour permettre l'expansion naturelle */
+  min-height: 540px; /* Hauteur minimale du calendrier (6 rangées * 90px min) */
+  overflow: visible; /* Change de 'hidden' à 'visible' */
+  padding: 5px;
+  min-height: 0; /* Pour s'assurer que le flex shrink fonctionne correctement */
+  flex: 1 1 auto; /* Permet au calendrier de s'adapter automatiquement */
+}
+
+/* Jours et événements */
+.day {
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-default);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 90px; /* Réduit encore un peu pour les petits écrans */
+  max-height: 100%; /* S'assure que chaque jour ne dépasse pas la hauteur disponible */
+}
+
+.day:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Structure de base des jours du calendrier */
+.date {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Conteneur de badge - nécessaire pour positionner les badges correctement */
+.badge-container {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Style du badge - simplifié et isolé */
+.events-badge {
+  display: inline-block;
+  background: var(--main-orange);
+  color: white;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* Les badges sont visibles uniquement dans le calendrier principal */
+.event-modal .events-badge,
+.day-events-modal .events-badge,
+.day-events-list .events-badge {
+  display: none;
+}
+
+/* Style spécifique pour les événements dans les modales */
+.modal-event {
+  position: relative;
+}
+
+.modal-event .events-badge,
+.day-events-modal .badge-container,
+.event-modal .badge-container {
+  display: none;
+}
+
+.calendar .day .date .events-badge {
+  display: block; /* Afficher uniquement ici */
+  background: var(--main-orange);
+  color: white;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.day-events-modal .events-badge,
+.event-modal .events-badge,
+.day-events-list .events-badge {
+  display: none;
+}
+
+.modal-event .events-badge,
+.modal-event.event .events-badge {
+  display: none;
+}
+
+/* Règle simplifiée pour masquer tous les badges dans les modales */
+.day-events-modal .events-badge,
+.day-events-modal .badge-container,
+.event-modal .events-badge,
+.event-modal .badge-container,
+.day-events-list .events-badge,
+.modal-event .events-badge {
+  display: none;
+}
+
+/* Règle renforcée pour masquer complètement les badges dans les modales */
+.day-events-modal *:not(.calendar > .day) .events-badge,
+.day-events-modal *:not(.calendar > .day) .badge-container,
+.event-modal *:not(.calendar > .day) .events-badge,
+.event-modal *:not(.calendar > .day) .badge-container {
+  display: none;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+}
+
+/* Events container - réduction de l'espacement */
+.events-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Réduit de 3px à 2px */
+  padding-top: 4px; /* Réduit de 6px à 4px */
+  padding-bottom: 2px; /* Réduit de 3px à 2px */
+  overflow: visible;
+  position: relative;
+  max-height: calc(
+    100% - 30px
+  ); /* Limite la hauteur pour éviter le débordement, en tenant compte de la date */
+}
+
+/* Style des événements - hauteur réduite */
+.event {
+  display: flex;
+  background-color: #e6f3ff;
+  border-radius: 6px;
+  margin-top: 0px; /* Supprime la marge */
+  font-size: clamp(9px, 0.8vw, 11px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 10px; /* Réduit de 12px à 10px */
+  max-height: 20px; /* Réduit de 22px à 20px */
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  margin: 0; /* Supprime toutes les marges */
+}
+
+.event:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.event-time {
+  background-color: var(--main-orange);
+  color: white;
+  padding: 2px 6px; /* Réduit de 3px à 2px */
+  min-width: 28px; /* Réduit de 30px à 28px */
+  text-align: center;
+  flex-shrink: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  font-weight: 500;
+}
+
+.event-title {
+  padding: 2px 6px; /* Réduit de 3px à 2px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  font-weight: 500;
+}
+
+.event:hover .event-title {
+  background-color: var(--main-blue);
+  color: white;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Règles pour afficher TOUJOURS les 2 premiers événements */
+.events-container .event:nth-child(1),
+.events-container .event:nth-child(2) {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+}
+
+/* Modifier uniquement la règle pour les événements 3+ */
+.events-container .event:nth-child(n + 3) {
+  display: none !important;
+}
+
+/* Styles communs pour les modales */
+.event-modal,
+.day-events-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(206, 206, 206, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style commun pour le contenu des modales */
+.modal-content,
+.day-events-content {
+  background: var(--modal-background);
+  backdrop-filter: blur(12px);
+  padding: var(--modal-padding);
+  border-radius: var(--modal-border-radius);
+  width: 95%;
+  max-width: 550px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  color: var(--main-blue);
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-title i {
+  color: var(--main-orange);
+}
+
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-default);
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.close-modal:hover {
+  background: var(--main-orange);
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* Styles spécifiques pour la modale d'événement */
+.event-details {
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.event-details p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+.event-details p i {
+  color: var(--main-orange);
+  font-size: 1.2em;
+}
+
+.event-details strong {
+  font-weight: 600;
+  color: var(--main-blue);
+  min-width: 100px;
+}
+
+/* Styles pour les boutons d'action */
+.event-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+  padding: 0 5px;
+}
+
+.modal-button {
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition-default);
+  background: var(--main-orange);
+  color: white;
+  border: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 130px;
+}
+
+.modal-button.secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #2c3e50;
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-button i {
+  font-size: 1.2em;
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Styles spécifiques pour la liste d'événements du jour */
+.day-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+  margin-bottom: 20px;
+}
+
+/* Affichage des événements dans les modales */
+.day-events-list .event {
+  display: flex;
+  font-size: 1em;
+  padding: 5px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Affichage des événements dans les modales - correction de la barre colorée */
+.day-events-list .event {
+  display: flex;
+  font-size: 1em;
+  padding: 0; /* Supprime le padding pour permettre à la barre colorée de s'afficher correctement */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 40px; /* Hauteur minimale augmentée pour la modale */
+  margin-bottom: 10px;
+  position: relative; /* Nécessaire pour le positionnement de la barre */
+  overflow: hidden; /* Empêche la barre de déborder */
+  background-color: white; /* Fond blanc uniforme */
+}
+
+/* Barre colorée pour les événements dans la modale */
+.day-events-list .event::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--main-orange);
+}
+
+/* Ajustement du contenu des événements dans la modale */
+.day-events-list .event .event-time {
+  background-color: transparent; /* Fond transparent au lieu du orange */
+  color: var(--main-orange); /* Couleur de texte orange */
+  padding: 10px 15px; /* Augmentation du padding */
+  min-width: 60px; /* Largeur minimale augmentée */
+  text-align: center;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 0; /* Pas de bordure arrondie */
+}
+
+/* Ajustement du titre des événements dans la modale */
+.day-events-list .event .event-title {
+  padding: 10px 15px;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.event-description {
+  font-style: italic;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Style pour la navigation mobile */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding: 10px 0;
+  justify-content: space-around;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.8em;
+  padding: 5px;
+}
+
+.nav-item.active {
+  color: var(--main-orange);
+}
+
+.nav-item i {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+/* Règles pour masquer les événements */
+.events-container .event:nth-child(n + 3) {
+  display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .calendar {
+    height: calc(100vh - 100px); /* Ajusté de 130px à 100px */
+    min-height: 450px; /* Hauteur minimum réduite */
+  }
+
+  .day {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .calendar {
+    height: calc(100vh - 90px); /* Ajusté de 120px à 90px */
+    min-height: 420px; /* Hauteur minimum encore réduite */
+  }
+
+  .event {
+    font-size: 9px;
+    min-height: 14px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .day {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+  }
+
+  .sidebar ul li a i {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+
+  .container-page {
+    margin-left: 0; /* Réinitialisation pour la vue mobile */
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 70px; /* Augmenté pour tenir compte de la navigation mobile */
+    height: auto; /* Permet au contenu de s'adapter sur mobile */
+    overflow-y: auto; /* Permet le défilement sur mobile */
+    max-height: none;
+  }
+
+  .main-layout {
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .calendar-header {
+    padding: 0 15px;
+  }
+
+  .calendar {
+    height: auto;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    overflow-y: auto;
+    display: flex; /* Passer à un layout flex pour les jours en colonne */
+    flex-direction: column;
+  }
+
+  .day {
+    width: 100%;
+    margin: 0 auto 10px auto; /* Ajouter une marge en bas pour séparer chaque jour */
+    height: auto;
+    padding: 15px;
+    overflow: visible;
+    box-sizing: border-box;
+    min-height: 100px; /* Hauteur minimale pour les jours sans événements */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: min-height 0.3s ease;
+    flex-shrink: 0; /* Empêche la compression des jours */
+    z-index: 1; /* Assurer que chaque jour a son propre contexte d'empilement */
+  }
+
+  /* Hauteur augmentée pour les jours avec exactement 1 événement */
+  .day .events-container:has(.event:nth-child(1):not(:nth-child(n + 2))) {
+    min-height: 40px; /* Hauteur minimale augmentée pour 1 événement */
+  }
+
+  /* Hauteur augmentée pour les jours avec 2 événements ou plus */
+  .day .events-container:has(.event:nth-child(2)) {
+    min-height: 90px; /* Hauteur minimale augmentée pour 2 événements */
+  }
+
+  /* Jour avec au moins 1 événement */
+  .day:has(.event) {
+    min-height: 150px; /* Hauteur de base augmentée pour un jour avec au moins 1 événement */
+  }
+
+  /* Jour avec 2 événements ou plus */
+  .day:has(.events-container .event:nth-child(2)) {
+    min-height: 190px; /* Hauteur augmentée pour 2 événements ou plus */
+  }
+
+  .date {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .event {
+    font-size: 12px;
+    margin-bottom: 8px; /* Plus d'espace entre les événements */
+    min-height: 32px; /* Hauteur minimale augmentée */
+    height: auto; /* Permettre aux événements de s'étendre en hauteur */
+    display: flex !important;
+    width: 100%; /* S'assurer que l'événement occupe toute la largeur */
+    box-sizing: border-box;
+    position: relative; /* Positionnement relatif pour un meilleur contrôle */
+  }
+
+  .events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Plus d'espace entre les événements */
+    padding: 10px 0; /* Plus d'espace autour des événements */
+    min-height: auto;
+    height: auto;
+    max-height: none;
+    width: 100%; /* S'assurer que le conteneur occupe toute la largeur */
+    position: relative; /* Nécessaire pour le positionnement correct */
+    overflow: visible; /* Permets aux événements d'être entièrement visibles */
+  }
+
+  /* Assurer que les événements ne débordent pas et sont complètement visibles */
+  .events-container .event {
+    position: relative;
+    overflow: visible;
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Empêche la compression des événements */
+  }
+
+  .calendar-days,
+  .weekday,
+  .other-month {
+    display: none;
+  }
+
+  .event {
+    font-size: 12px;
+    margin-bottom: 8px; /* Plus d'espace entre les événements */
+    min-height: 32px; /* Hauteur minimale augmentée */
+    height: auto; /* Permettre aux événements de s'étendre en hauteur */
+    display: flex !important;
+  }
+
+  .events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0; /* Plus d'espace autour des événements */
+    min-height: auto;
+    height: auto;
+    max-height: none;
+  }
+
+  .calendar .events-container .event:nth-child(n + 3) {
+    display: none;
+  }
+
+  .events-container .event:nth-child(-n + 2) {
+    display: flex !important;
+    flex-wrap: nowrap; /* S'assurer que le contenu ne passe pas à la ligne */
+  }
+
+  .modal-content,
+  .day-events-content {
+    width: 95%;
+    max-width: none;
+    padding: 25px 15px;
+    border-radius: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .event-details p,
+  .day-events-list .event {
+    padding: 12px;
+    font-size: 1em;
+  }
+
+  .event-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  /* Typography adjustments */
+  .date {
+    font-size: 1.4em;
+  }
+
+  .event {
+    font-size: 14px;
+    min-height: 28px;
+  }
+
+  .event-time {
+    min-width: 40px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event-title {
+    padding: 6px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Events container */
+  .events-container {
+    gap: 10px;
+    padding: 8px 0;
+  }
+
+  /* Show first two events */
+  .events-container .event:nth-child(-n + 2) {
+    display: flex !important;
+  }
+
+  .events-container .event:nth-child(n + 3) {
+    display: none !important;
+  }
+
+  /* Day adjustments */
+  .day {
+    min-height: 140px;
+    padding: 15px;
+  }
+
+  /* Assurer que les jours du mois courant ont une apparence distincte */
+  .day:not(.other-month) {
+    background-color: white;
+  }
+}
+
+/* Additional styles for very small screens */
+@media screen and (max-width: 480px) {
+  .container-page {
+    padding: 55px 10px 70px;
+  }
+
+  .day {
+    width: 100%;
+    min-height: 100px; /* Hauteur de base augmentée */
+    padding: 12px 15px; /* Plus d'espace horizontal */
+    margin-bottom: 15px; /* Plus d'espace entre les jours */
+  }
+
+  /* Jour avec au moins 1 événement */
+  .day:has(.event) {
+    min-height: 140px;
+  }
+
+  /* Jour avec 2 événements ou plus */
+  .day:has(.events-container .event:nth-child(2)) {
+    min-height: 190px; /* Hauteur augmentée */
+  }
+
+  .nav-button {
+    min-width: 80px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .modal-content,
+  .day-events-content {
+    padding: 20px 15px;
+  }
+
+  .close-modal {
+    top: 15px;
+    right: 15px;
+  }
+
+  .calendar {
+    gap: 5px;
+  }
+
+  .event {
+    font-size: 13px; /* Taille de police légèrement réduite */
+    min-height: 36px; /* Hauteur minimale augmentée */
+    margin-bottom: 10px; /* Plus d'espace entre les événements */
+    width: 100%;
+  }
+
+  /* Optimiser l'affichage des deux premiers événements */
+  .events-container .event:nth-child(1),
+  .events-container .event:nth-child(2) {
+    margin-bottom: 10px; /* Espace défini entre les événements */
+    display: flex !important;
+    position: relative;
+  }
+
+  .date {
+    font-size: 1.3em;
+  }
+}
+
+/* Restauration du style pour les jours des mois précédent et suivant */
+.other-month {
+  background-color: #f9f9f9; /* Couleur grise légère */
+  opacity: 0.7;
+  box-shadow: var(--shadow-sm);
+}
+
+.other-month:hover {
+  opacity: 0.8;
+  box-shadow: var(--shadow-md);
+}
+
+/* Assurer que les deux premiers événements sont toujours visibles */
+.events-container .event:nth-child(1),
+.events-container .event:nth-child(2) {
+  display: flex !important;
+  margin-bottom: 6px;
+}
+
+@media screen and (max-width: 1600px) and (min-height: 900px) {
+  /* Pour les écrans larges mais pas trop hauts */
+  .calendar {
+    grid-template-rows: repeat(6, minmax(80px, 1fr));
+    min-height: 480px;
+  }
+
+  .day {
+    min-height: 80px;
+  }
+}
+
+@media screen and (min-width: 1400px) and (min-height: 1000px) {
+  /* Pour les très grands écrans */
+  .calendar {
+    grid-template-rows: repeat(6, minmax(100px, 1fr));
+    min-height: 600px;
+  }
+}
+
+/* Nouvelle media query pour les écrans particulièrement courts */
+@media screen and (max-height: 768px) {
+  .calendar {
+    grid-template-rows: repeat(6, minmax(70px, 1fr));
+    min-height: 420px;
+  }
+
+  .day {
+    min-height: 70px;
+    padding: 8px;
+  }
+
+  .date {
+    margin-bottom: 3px;
+    font-size: 1.1em;
+  }
+
+  .events-container {
+    gap: 1px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+  }
+
+  .event {
+    min-height: 8px;
+    max-height: 16px;
+  }
+}

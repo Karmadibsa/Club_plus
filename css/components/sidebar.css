@@ -1,0 +1,329 @@
+/* 
+ * Styles pour la navigation principale de l'application
+ * - Sidebar desktop (gauche)
+ * - Header mobile (haut)
+ * - Navigation mobile (bas)
+ */
+
+/* =================== SIDEBAR DESKTOP =================== */
+.sidebar {
+  width: 15%;
+  flex-shrink: 0;
+  background-color: var(--main-blue);
+  color: white;
+  padding: 1.5%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  min-width: 200px;
+  justify-content: space-between;
+}
+
+.logo-container {
+  padding: 5%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 70%;
+  height: auto;
+  max-width: 120px;
+}
+
+/* Menu navigation principal */
+.menu-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Effet de survol */
+.sidebar ul li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--main-orange);
+  z-index: -1;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: translateX(5px);
+}
+
+.sidebar ul li a:hover::before {
+  width: 100%;
+}
+
+/* État actif */
+.sidebar ul li a.active {
+  background-color: var(--main-orange);
+  border-radius: 8px;
+}
+
+.sidebar ul li a.active::before {
+  display: none;
+}
+
+/* Ensure active menu items in comptereservation have orange background */
+.sidebar .menu-items li.active a,
+.sidebar .menu-items li a.active {
+  background-color: var(--main-orange);
+  color: white;
+  font-weight: 500;
+}
+
+/* Style des icônes */
+.sidebar ul li a i {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  stroke-width: 1.5;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+/* Texte des liens */
+.sidebar ul li a span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95em;
+}
+
+/* Bouton déconnexion en bas de la sidebar */
+.sidebar-footer {
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  margin-top: auto;
+}
+
+.logout-btn {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.logout-btn:hover {
+  background-color: var(--danger);
+  transform: rotate(360deg);
+}
+
+/* =================== HEADER MOBILE =================== */
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-header .logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-header .logo {
+  height: 40px;
+  width: auto;
+}
+
+.mobile-header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mobile-logout-btn {
+  background-color: var(--main-orange);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-logout-btn:hover {
+  background-color: var(--danger);
+  transform: scale(1.05);
+}
+
+/* =================== NAVIGATION MOBILE =================== */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.8em;
+  gap: 4px;
+  transition: all 0.3s ease;
+  width: 20%;
+}
+
+.nav-item i {
+  width: 24px;
+  height: 24px;
+  color: #666 !important;
+  opacity: 1 !important;
+}
+
+.nav-item span {
+  font-size: 12px;
+}
+
+.nav-item.active {
+  color: var(--main-orange);
+}
+
+.mobile-nav .nav-item.active i {
+  color: var(--main-orange) !important;
+}
+
+/* For mobile navigation */
+.mobile-nav a.active {
+  color: var(--main-orange);
+  border-top: 3px solid var(--main-orange);
+}
+
+/* =================== MEDIA QUERIES =================== */
+@media screen and (max-width: 992px) {
+  .sidebar {
+    width: 20%;
+    min-width: 180px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Masquer sidebar et afficher navigation mobile */
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /* Afficher le header mobile */
+  .mobile-header {
+    display: flex;
+  }
+
+  /* Ajustement pour l'espace occupé par le header */
+  .container-page {
+    padding-top: 70px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Ajustements pour petits écrans */
+  .mobile-nav {
+    padding: 8px 0;
+  }
+
+  .nav-item i {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-item span {
+    font-size: 10px;
+  }
+
+  .mobile-header {
+    padding: 8px 12px;
+    height: 50px;
+  }
+
+  .mobile-header .logo {
+    height: 30px;
+  }
+
+  .mobile-logout-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* =================== COMPATIBILITÉ LUCIDE ICONS =================== */
+[data-lucide] {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  width: 24px !important;
+  height: 24px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}

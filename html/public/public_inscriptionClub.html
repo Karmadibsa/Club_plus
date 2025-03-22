@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/base/common.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/public/public_inscriptionClub.css"
+    />
+
+    <title>Inscription Club</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <a href="../../index.html" class="return-link">
+        <i class="arrow-left">←</i> Retour
+      </a>
+      <h1>Formulaire d'Inscription - <strong>Club</strong></h1>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="club-name"><strong>Nom du club :</strong></label>
+          <input
+            type="text"
+            id="club-name"
+            name="club-name"
+            placeholder="Nom du club"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="representative-name"
+              ><strong>Nom du représentant :</strong></label
+            >
+            <input
+              type="text"
+              id="representative-name"
+              name="representative-name"
+              placeholder="Nom du représentant"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="representative-firstname"
+              >Prénom du représentant :</label
+            >
+            <input
+              type="text"
+              id="representative-firstname"
+              name="representative-firstname"
+              placeholder="Prénom du représentant"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Numéro de téléphone :</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Numéro de téléphone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse e-mail :</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Adresse e-mail"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Mot de passe :</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Mot de passe"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmer le mot de passe :</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              placeholder="Confirmer le mot de passe"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="street-number">Numéro de rue :</label>
+            <input
+              type="text"
+              id="street-number"
+              name="street-number"
+              placeholder="Numéro de rue"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="street">Rue :</label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              placeholder="Rue"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="postal-code">Code postal :</label>
+            <input
+              type="text"
+              id="postal-code"
+              name="postal-code"
+              placeholder="Code postal"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">Ville :</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="Ville"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms">
+            J'accepte les <strong>termes et conditions</strong> d'inscription au
+            programme des clubs.
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="cgv" name="cgv" required />
+          <label for="cgv"
+            >J'affirme avoir lu les conditions générales de vente.</label
+          >
+        </div>
+
+        <button type="submit"><strong>Envoyer l'inscription</strong></button>
+      </form>
+    </div>
+  </body>
+</html>

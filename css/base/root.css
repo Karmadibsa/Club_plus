@@ -1,0 +1,82 @@
+:root {
+  /* Couleurs principales */
+  --main-white: #ffffff;
+  --main-black: #000000;
+  --main-orange: #f26122; /* Pour les boutons d'action, badges ou éléments d'accentuation */
+  --main-blue: #1a5f7a; /* Utilisé pour les boutons et liens */
+  --neutral-blue: #2c3e50;
+  --secondary-blue: #3498db;
+  --secondary-green: #47b3a3;
+  --main-orange-rgb: 255, 107, 53; /* Valeur RGB de votre orange */
+
+  /* Couleurs de fond */
+  --bg-light-gray: #f8f9fa; /* Légèrement plus foncé pour meilleur contraste */
+  --bg-medium-gray: #e9ecef; /* Légèrement plus foncé */
+
+  /* Couleurs de texte */
+  --text-dark: #333333; /* Plus sombre pour meilleur contraste */
+  --text-medium: #666666; /* Plus sombre */
+  --text-light: #999999; /* Plus sombre */
+
+  /* Couleurs d'état */
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --info: #17a2b8;
+
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Police */
+  --font-family: "Poppins", sans-serif;
+
+  /* Variables de contraste */
+  --border-color: #dee2e6;
+  --input-focus-shadow: rgba(26, 95, 122, 0.25);
+}
+
+/* Application globale de la police Poppins */
+html,
+body {
+  font-family: var(--font-family);
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+/* Ensure Poppins font is universally applied */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+textarea,
+select,
+span,
+div,
+label {
+  font-family: var(--font-family);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,517 @@
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light-gray);
+  color: var(--text-dark);
+}
+
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.container-page {
+  flex: 1;
+  margin-left: 15%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px; /* Augmentation de la largeur maximale */
+  width: 100%;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--main-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header h1 i {
+  color: var(--main-orange);
+}
+
+/* Carte de ticket avec mise en page horizontale */
+.ticket-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px; /* Réduit pour économiser de l'espace vertical */
+  margin-bottom: 20px; /* Réduit la marge inférieure */
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Disposition horizontale */
+  flex-direction: row;
+  gap: 20px;
+}
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--main-orange);
+}
+
+.event-details {
+  flex: 1; /* Prend l'espace disponible */
+  margin-bottom: 0; /* Suppression de la marge inférieure */
+}
+
+.event-details h2 {
+  color: var(--main-blue);
+  font-size: 20px; /* Légèrement réduit */
+  margin-bottom: 10px; /* Réduit l'espace */
+}
+
+.event-details p {
+  font-size: 14px; /* Taille réduite pour gagner de l'espace */
+  color: var(--text-dark);
+  margin: 6px 0; /* Marge verticale réduite */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-details i {
+  color: var(--main-orange);
+  width: 20px;
+  height: 20px;
+}
+
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-left: 1px dashed var(--border-color); /* Séparateur vertical */
+  border-top: none; /* Suppression de la bordure supérieure */
+  min-width: 220px; /* Largeur minimale pour le conteneur QR */
+}
+
+/* Nouvelle classe pour mettre les contrôles sur une seule ligne */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.event-selector {
+  flex: 1;
+  min-width: 250px;
+  background-color: var(--bg-light-gray);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.event-selector label {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-right: 10px;
+}
+
+.event-select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--text-dark);
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%231a5f7a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  min-width: 180px;
+  width: 100%;
+}
+
+.event-select:focus {
+  outline: none;
+  border-color: var(--main-blue);
+  box-shadow: 0 0 0 2px rgba(26, 95, 122, 0.1);
+}
+
+/* Style pour la navigation des tickets */
+.tickets-navigation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+  background-color: var(--bg-light-gray);
+  padding: 12px 15px;
+  border-radius: 8px;
+}
+
+.ticket-counter {
+  font-size: 16px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background-color: var(--bg-medium-gray);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-btn i {
+  width: 20px;
+  height: 20px;
+}
+
+/* Style pour le carrousel de tickets */
+.tickets-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-card {
+  display: none;
+}
+
+.ticket-card.active {
+  display: flex; /* Affiche le ticket actif */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style pour le wrapper du QR code avec overlay */
+.qr-code-wrapper {
+  position: relative;
+  cursor: pointer;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.qr-code-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.qr-code-wrapper canvas {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+.zoom-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.zoom-overlay i {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.qr-code-wrapper:hover .zoom-overlay {
+  opacity: 1;
+}
+
+.instructions {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--text-medium);
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn i {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-primary {
+  background-color: var(--main-orange);
+  color: white;
+  box-shadow: 0 4px 6px rgba(242, 97, 34, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--main-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(242, 97, 34, 0.3);
+}
+
+/* QR zoom modal */
+.event-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--main-blue);
+  font-size: 18px;
+}
+
+.modal-title i {
+  color: var(--main-orange);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-medium);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-modal:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--danger);
+}
+
+.zoomed-qr-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.zoomed-qr-container img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.modal-footer {
+  text-align: center;
+  margin-top: 10px;
+  color: var(--text-medium);
+  font-style: italic;
+}
+
+/* Adaptation responsive */
+@media (max-width: 768px) {
+  .container-page {
+    margin-left: 0;
+    margin-bottom: 60px; /* Espace pour la navigation mobile */
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tickets-navigation {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .ticket-card {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .qr-code-container {
+    padding: 15px 0 0;
+    border-left: none;
+    border-top: 1px dashed var(--border-color);
+  }
+
+  .qr-code-wrapper canvas {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .modal-content {
+    margin: 15% auto;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .event-details h2 {
+    font-size: 18px;
+  }
+
+  .qr-code-wrapper canvas {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Spécial impression */
+@media print {
+  .sidebar,
+  .mobile-nav,
+  .actions,
+  .header,
+  .tickets-navigation,
+  .event-selector {
+    display: none !important;
+  }
+
+  .container-page {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .container {
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .ticket-card {
+    display: block !important;
+    page-break-after: always;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+  }
+
+  .ticket-card:last-child {
+    page-break-after: avoid;
+  }
+}

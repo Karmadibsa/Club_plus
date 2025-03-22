@@ -1,0 +1,438 @@
+/* IMPORTATION ET CONFIGURATION DE BASE */
+@import "../base/common.css";
+
+/* STRUCTURE GÉNÉRALE */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light-gray);
+  color: var(--text-dark);
+}
+
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.container-page {
+  flex: 1;
+  margin-left: 15%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+}
+
+/* COMPOSANTS D'INTERFACE */
+/* 1. En-tête de page */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--main-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header h1 i {
+  color: var(--main-orange);
+}
+
+/* 2. Sélecteur d'événement */
+.event-selector {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: var(--bg-light-gray);
+  border-radius: 8px;
+}
+
+.event-selector label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.event-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-family);
+  font-size: 15px;
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%231a5f7a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+.event-select:focus {
+  outline: none;
+  border-color: var(--main-blue);
+  box-shadow: 0 0 0 2px rgba(26, 95, 122, 0.1);
+}
+
+/* 3. Catégories d'évaluation */
+.rating-category {
+  margin-bottom: 40px;
+  border-radius: 8px;
+  background-color: var(--bg-light-gray);
+  padding: 20px;
+}
+
+.rating-category h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-blue);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-category h2 i {
+  color: var(--main-orange);
+}
+
+/* 4. Sections individuelles de notation */
+.rating-section {
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rating-section:last-child {
+  margin-bottom: 0;
+}
+
+.rating-section:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rating-title {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--main-blue);
+  font-size: 18px;
+}
+
+/* 5. Système d'étoiles */
+.rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.rating-scale {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin: 0 20px;
+  flex-wrap: nowrap; /* Forcer les étoiles à rester sur une ligne */
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  touch-action: manipulation;
+  display: flex; /* Assurer une meilleure gestion de l'espace */
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ccc;
+}
+
+/* Style pour les étoiles actives */
+.rating label.active {
+  color: var(--main-orange) !important;
+}
+
+/* Affichage de la valeur de notation */
+.rating-value {
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--main-blue);
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: rgba(240, 240, 240, 0.5);
+  width: fit-content;
+  margin: 10px auto 0;
+  transition: all 0.3s ease;
+  min-height: 20px; /* Hauteur minimale pour éviter le décalage */
+  min-width: 80px; /* Largeur minimale pour éviter le décalage horizontal */
+  display: block; /* Assurer que l'élément occupe tout l'espace */
+}
+
+/* Suppression du hover sur mobile */
+@media (hover: hover) {
+  /* Corriger le hover pour qu'il fonctionne de gauche à droite */
+  .rating label:hover {
+    color: var(--main-blue);
+    transform: scale(1.2);
+  }
+
+  /* Supprimer le sélecteur qui causait le hover inversé */
+  /* .rating label:hover ~ label {
+    color: var(--main-blue);
+    transform: scale(1.2);
+  } */
+
+  /* Nouveau sélecteur pour colorer jusqu'à l'élément survolé */
+  .rating-scale:hover label {
+    color: #ccc;
+  }
+
+  /* Colorer tous les éléments depuis le début jusqu'à l'élément survolé */
+  .rating-scale label:hover ~ label {
+    color: #ccc;
+  }
+
+  .rating-scale label:hover {
+    color: var(--main-blue);
+    transform: scale(1.2);
+  }
+
+  .rating-scale label:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Ajout d'une animation pour le clic */
+.rating label.clicked {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scale-label {
+  font-size: 14px;
+  color: var(--text-medium);
+  min-width: 90px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rating-desc {
+  font-size: 12px;
+  display: block;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* 6. Section commentaires - Supprimée car non utilisée */
+/* .comment-section {
+  margin-bottom: 30px;
+}
+
+.comment-section h3 {
+  font-size: 18px;
+  color: var(--main-blue);
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  resize: vertical;
+  min-height: 100px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--main-blue);
+  box-shadow: 0 0 0 2px rgba(26, 95, 122, 0.1);
+} */
+
+/* 7. Bouton de soumission */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: var(--main-orange);
+  color: white;
+  box-shadow: 0 4px 6px rgba(242, 97, 34, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--main-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(242, 97, 34, 0.3);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .container-page {
+    margin-left: 0;
+    margin-bottom: 60px;
+    padding: 10px;
+    align-items: flex-start; /* Aligner le contenu en haut pour éviter les débordements */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .rating {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .scale-label {
+    margin: 5px 0;
+    min-width: 40px; /* Réduire la largeur sur mobile */
+  }
+
+  .rating-scale {
+    margin: 10px 0;
+    width: 100%;
+    flex-wrap: nowrap; /* Forcer les étoiles à rester sur une ligne */
+    justify-content: space-between; /* Répartir uniformément */
+    overflow-x: auto; /* Permettre de faire défiler si nécessaire */
+    padding: 5px 0; /* Ajouter de l'espace pour le défilement */
+    gap: 0; /* Supprimer l'espacement pour maximiser l'espace */
+  }
+
+  .rating-category {
+    padding: 15px;
+  }
+
+  .rating-section {
+    padding: 12px;
+  }
+
+  /* Augmenter la taille des zones de touche pour les étoiles sur mobile */
+  .rating label {
+    padding: 8px 5px;
+    font-size: 20px;
+    padding: 6px 4px;
+  }
+
+  /* Réduire la taille du texte des étiquettes */
+  .rating-desc {
+    font-size: 10px;
+  }
+
+  .rating-value {
+    font-size: 13px;
+    padding: 3px 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .rating-section {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .rating-title {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* Ajuster les étoiles pour qu'elles prennent moins de place */
+  .rating-scale {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .rating label {
+    padding: 5px 1px;
+    font-size: 18px;
+    padding: 5px 2px;
+  }
+
+  .rating label i {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Améliorer l'affichage des étiquettes */
+  .scale-label {
+    font-size: 12px;
+  }
+
+  .rating-value {
+    font-size: 12px;
+  }
+}

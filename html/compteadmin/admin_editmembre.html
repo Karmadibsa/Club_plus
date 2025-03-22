@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifier un Membre</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_editmembre.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Utilisation d'une version spécifique et stable de Lucide -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/Connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="admin_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="admin_evenementAdmin.html">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="admin_membres.html" class="active">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+          <li>
+            <a href="admin_monclub.html">
+              <i data-lucide="home"></i>
+              Mon Club
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <header class="main-header">
+            <div class="header-back">
+              <a href="admin_membres.html" class="back-link">
+                <i data-lucide="arrow-left"></i> Retour à la liste
+              </a>
+            </div>
+            <h1>Modifier un Membre</h1>
+            <p class="subtitle">
+              Modifiez les informations et le rôle du membre
+            </p>
+          </header>
+
+          <main class="edit-member-main">
+            <div class="edit-member-content">
+              <!-- Section pour les informations personnelles -->
+              <section class="edit-section">
+                <h2 class="section-title">Informations personnelles</h2>
+                <form id="member-personal-info-form" class="info-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="member-firstname">Prénom</label>
+                      <input
+                        type="text"
+                        id="member-firstname"
+                        name="memberFirstname"
+                        placeholder="Prénom"
+                        value="Jane"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="member-lastname">Nom</label>
+                      <input
+                        type="text"
+                        id="member-lastname"
+                        name="memberLastname"
+                        placeholder="Nom"
+                        value="Doe"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="member-birthdate">Date de naissance</label>
+                      <input
+                        type="date"
+                        id="member-birthdate"
+                        name="memberBirthdate"
+                        value="1990-05-15"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="member-email">Email</label>
+                      <input
+                        type="email"
+                        id="member-email"
+                        name="memberEmail"
+                        placeholder="Email"
+                        value="jane.doe@email.com"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="member-phone">Téléphone</label>
+                      <input
+                        type="tel"
+                        id="member-phone"
+                        name="memberPhone"
+                        placeholder="Téléphone"
+                        value="+33 6 12 34 56 78"
+                        class="form-control"
+                      />
+                    </div>
+                    <!-- Champ laissé vide intentionnellement pour l'alignement -->
+                    <div class="form-group"></div>
+                  </div>
+                </form>
+              </section>
+
+              <!-- Section pour l'adresse -->
+              <section class="edit-section">
+                <h2 class="section-title">Adresse</h2>
+                <form id="member-address-form" class="info-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="member-address-number">Numéro</label>
+                      <input
+                        type="text"
+                        id="member-address-number"
+                        name="memberAddressNumber"
+                        placeholder="Numéro"
+                        value="23"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="member-address-street">Rue</label>
+                      <input
+                        type="text"
+                        id="member-address-street"
+                        name="memberAddressStreet"
+                        placeholder="Nom de rue"
+                        value="rue des Lilas"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="member-city">Ville</label>
+                      <input
+                        type="text"
+                        id="member-city"
+                        name="memberCity"
+                        placeholder="Ville"
+                        value="Paris"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="member-zipcode">Code Postal</label>
+                      <input
+                        type="text"
+                        id="member-zipcode"
+                        name="memberZipcode"
+                        placeholder="Code postal"
+                        value="75001"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </section>
+
+              <!-- Section pour le rôle du membre -->
+              <section class="edit-section">
+                <h2 class="section-title">Rôle du membre</h2>
+                <p class="section-description">
+                  Le rôle détermine les permissions et l'accès du membre dans le
+                  club.
+                </p>
+                <div class="role-selector-container">
+                  <div class="role-selector">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="role-admin"
+                      value="admin"
+                      checked
+                    />
+                    <label for="role-admin" class="role-option">
+                      <div class="role-header">
+                        <span class="role-title">Admin</span>
+                        <span class="role-badge admin">Admin</span>
+                      </div>
+                      <p class="role-description">
+                        Accès complet à l'administration du club, création
+                        d'événements et gestion des membres.
+                      </p>
+                    </label>
+                  </div>
+
+                  <div class="role-selector">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="role-reservation"
+                      value="reservation"
+                    />
+                    <label for="role-reservation" class="role-option">
+                      <div class="role-header">
+                        <span class="role-title">Réservation</span>
+                        <span class="role-badge reservation">Réservation</span>
+                      </div>
+                      <p class="role-description">
+                        Peut gérer les réservations et les événements du club,
+                        mais pas les membres.
+                      </p>
+                    </label>
+                  </div>
+
+                  <div class="role-selector">
+                    <input
+                      type="radio"
+                      name="role"
+                      id="role-adherent"
+                      value="adherent"
+                    />
+                    <label for="role-adherent" class="role-option">
+                      <div class="role-header">
+                        <span class="role-title">Adhérent</span>
+                        <span class="role-badge adherent">Adhérent</span>
+                      </div>
+                      <p class="role-description">
+                        Membre standard du club avec accès aux événements et aux
+                        fonctionnalités de base.
+                      </p>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section pour les notes internes -->
+              <section class="edit-section">
+                <h2 class="section-title">Notes administratives</h2>
+                <p class="section-description">
+                  Ces notes sont uniquement visibles par les administrateurs.
+                </p>
+                <form id="member-notes-form" class="info-form">
+                  <div class="form-group full-width">
+                    <textarea
+                      id="member-notes"
+                      name="memberNotes"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Notes concernant ce membre..."
+                    >
+Membre très actif, participe régulièrement aux événements du club. Propose souvent son aide pour l'organisation.</textarea
+                    >
+                  </div>
+                </form>
+              </section>
+
+              <!-- Boutons d'action -->
+              <div class="actions-container">
+                <button class="btn btn-primary" id="save-member-btn">
+                  Enregistrer les modifications
+                </button>
+                <a
+                  href="admin_membres.html"
+                  class="btn btn-secondary"
+                  id="cancel-btn"
+                >
+                  Annuler
+                </a>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="evenementAdmin.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="membres.html" class="nav-item active">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+      <a href="monclub.html" class="nav-item">
+        <i data-lucide="home"></i>
+        <span>Club</span>
+      </a>
+    </nav>
+
+    <!-- Initialisation de Lucide et scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+          console.log("Icônes Lucide initialisées avec succès");
+        } else {
+          console.error("La bibliothèque Lucide n'a pas pu être chargée");
+        }
+
+        // Récupérer l'ID du membre depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberId = urlParams.get("id");
+
+        if (memberId) {
+          console.log(
+            `Chargement des informations pour le membre ID: ${memberId}`
+          );
+          // Simuler le chargement des données
+          // Dans une vraie application, vous feriez un appel API ici
+
+          // Pré-remplir le formulaire avec les données du membre sélectionné
+        } else {
+          console.error("ID du membre non spécifié dans l'URL");
+        }
+
+        // Gérer la soumission du formulaire
+        const saveBtn = document.getElementById("save-member-btn");
+        if (saveBtn) {
+          saveBtn.addEventListener("click", function () {
+            // Récupérer toutes les données
+            const firstName = document.getElementById("member-firstname").value;
+            const lastName = document.getElementById("member-lastname").value;
+            const birthdate = document.getElementById("member-birthdate").value;
+            const email = document.getElementById("member-email").value;
+            const phone = document.getElementById("member-phone").value;
+
+            // Récupérer les données d'adresse
+            const addressNumber = document.getElementById(
+              "member-address-number"
+            ).value;
+            const addressStreet = document.getElementById(
+              "member-address-street"
+            ).value;
+            const city = document.getElementById("member-city").value;
+            const zipcode = document.getElementById("member-zipcode").value;
+
+            const role = document.querySelector(
+              'input[name="role"]:checked'
+            ).value;
+
+            // Dans une vraie application, envoyer ces données à votre API
+            console.log(
+              `Sauvegarde des modifications pour ${firstName} ${lastName} avec le rôle: ${role}`
+            );
+            console.log(
+              `Adresse: ${addressNumber} ${addressStreet}, ${zipcode} ${city}`
+            );
+
+            // Afficher confirmation
+            alert("Les modifications ont été enregistrées avec succès !");
+            // Redirection vers la liste des membres
+            window.location.href = "admin_membres.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+/* STRUCTURE ET CONTENEUR GLOBAL */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* DISPOSITION DU CONTENEUR PRINCIPAL */
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* STYLES PARTAGÉS DES LIENS */
+.footer-links a {
+  color: #7f8c8d;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3498db;
+}
+
+/* SECTIONS SPÉCIFIQUES */
+/* 1. Navigation */
+.footer-nav {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* 2. Logo central */
+.footer-logo {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+/* 3. Réseaux sociaux */
+.social-links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-icon {
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
+
+/* Texte de copyright */
+footer p {
+  margin: 0;
+  color: #666;
+}
+
+/* VERSION MOBILE */
+@media screen and (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-logo {
+    order: -1;
+    text-align: center;
+  }
+
+  .footer-logo img {
+    max-width: 150px;
+  }
+
+  .social-links {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  footer {
+    padding: 30px 0;
+  }
+}

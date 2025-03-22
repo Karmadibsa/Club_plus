@@ -1,0 +1,1072 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  background-color: var(--bg-light-gray);
+  color: var(--text-dark);
+}
+
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.container-page {
+  flex: 1;
+  margin-left: 15%;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-header {
+  margin-bottom: 25px;
+}
+
+.main-header h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--main-blue);
+  display: flex;
+  align-items: center;
+}
+
+/* Styles pour la section du code ami */
+.friend-code-container {
+  background-color: rgba(26, 95, 122, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--main-blue);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.friend-code-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.friend-code-info h3 {
+  font-size: 16px;
+  color: var(--main-blue);
+  margin-bottom: 5px;
+}
+
+.friend-code-info p {
+  font-size: 13px;
+  color: var(--text-medium);
+  margin: 0;
+}
+
+.friend-code-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.code {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-dark);
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px dashed var(--border-color);
+  letter-spacing: 1px;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: var(--main-orange);
+  transform: translateY(-2px);
+}
+
+.copy-button i {
+  width: 18px;
+  height: 18px;
+}
+
+.copy-button.copied {
+  background-color: var(--success);
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Suppression des styles des onglets qui ne sont plus utilisés */
+.tabs {
+  display: none;
+}
+
+/* Styles pour le wrapper de recherche simplifiée */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 500px; /* Élargi pour une meilleure visibilité */
+}
+
+.search-input {
+  padding: 12px 15px 12px 45px;
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  width: 100%;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+  border-color: var(--main-blue);
+  box-shadow: 0 2px 12px rgba(26, 95, 122, 0.15);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-medium);
+  width: 20px;
+  height: 20px;
+}
+
+/* Suppression des styles pour les filtres qui ne sont plus utilisés */
+.filters-container,
+.filter-btn,
+.filter-dropdown-content,
+.filter-group,
+.filter-options,
+.filter-actions,
+.apply-filter-btn,
+.reset-filter-btn {
+  display: none;
+}
+
+/* Style pour le bouton d'ajout d'ami */
+.add-friend-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: var(--main-orange);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.add-friend-btn i {
+  width: 20px;
+  height: 20px;
+}
+
+.add-friend-btn:hover {
+  background-color: var(--main-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le bouton d'ajout de membre */
+.add-member-btn {
+  display: none;
+}
+
+.add-member-btn i {
+  width: 20px;
+  height: 20px;
+}
+
+.add-member-btn:hover {
+  background-color: var(--main-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.friends-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px; /* Réduction de la taille de police pour mieux gérer plusieurs colonnes */
+}
+
+.friends-table th,
+.friends-table td {
+  padding: 12px 8px; /* Réduction du padding pour accommoder plus de colonnes */
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.friends-table th {
+  background-color: rgba(26, 95, 122, 0.05);
+  font-weight: 600;
+  color: var(--main-blue);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Suppression des styles pour user-avatar qui n'est plus utilisé */
+
+.role {
+  display: block;
+  font-size: 12px;
+  color: var(--text-medium);
+}
+
+/* Suppression des styles spécifiques au statut qui n'est plus utilisé */
+.status-active {
+  display: none;
+}
+
+.actions-cell {
+  white-space: nowrap;
+  padding: 8px 15px;
+}
+
+.action-btn-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.action-btn i {
+  width: 18px;
+  height: 18px;
+}
+
+.edit-btn {
+  color: var(--main-blue);
+}
+
+.edit-btn:hover {
+  background-color: rgba(26, 95, 122, 0.1);
+}
+
+.delete-btn {
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-medium);
+}
+
+.pagination-btn.active {
+  background-color: var(--main-orange);
+  color: white;
+  border-color: var(--main-orange);
+}
+
+.pagination-btn:hover:not(.active) {
+  background-color: rgba(26, 95, 122, 0.05);
+  border-color: var(--main-blue);
+  color: var(--main-blue);
+}
+
+.pagination-ellipsis {
+  padding: 8px 12px;
+  color: var(--text-medium);
+}
+
+@media (max-width: 768px) {
+  .container-page {
+    margin-left: 0;
+    margin-bottom: 60px; /* Espace pour la navigation mobile */
+  }
+
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 38px 10px 40px; /* Légèrement réduit sur mobile */
+  }
+
+  .add-friend-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .add-member-btn {
+    display: none;
+  }
+
+  .friends-table {
+    display: none;
+  }
+
+  .mobile-members-cards {
+    display: flex; /* Assurez-vous que c'est bien en flex sur mobile */
+  }
+
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .friend-code-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .friend-code-display {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .code {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .copy-button {
+    padding: 6px 12px;
+  }
+
+  .actions-cell {
+    min-width: 90px; /* S'assure que la cellule d'actions a une largeur minimale */
+  }
+
+  .filters-container {
+    display: none;
+  }
+
+  .filter-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-dropdown-content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Amélioration de l'en-tête */
+  .main-header h1 {
+    font-size: 22px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* Ajustement du conteneur de code */
+  .friend-code-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .friend-code-display {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .code {
+    font-size: 16px;
+    padding: 10px;
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Amélioration de la recherche */
+  .header-actions {
+    padding: 0 5px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: none;
+  }
+
+  .search-input {
+    padding: 10px 15px 10px 40px;
+  }
+
+  /* Passage de la vue tableau à la vue cartes */
+  .friends-table {
+    display: none;
+  }
+
+  .mobile-members-cards {
+    display: flex;
+  }
+
+  /* Adaptation de la pagination */
+  .pagination {
+    gap: 3px;
+  }
+
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* Cacher certains boutons de pagination sur mobile */
+  .pagination-btn:nth-child(4),
+  .pagination-btn:nth-child(5),
+  .pagination-btn:nth-child(6) {
+    display: none;
+  }
+
+  /* Adaptation des boutons d'action */
+  .card-action-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  /* Améliorer l'affichage des cartes membres en mobile */
+  .member-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .member-detail {
+    width: 100%;
+    grid-column: 1 / -1; /* S'assure que tous les détails prennent la largeur complète */
+  }
+
+  /* On supprime la grille sur mobile pour un affichage en colonne */
+  .full-width {
+    grid-column: initial;
+  }
+
+  /* Ajustement pour améliorer la lisibilité des détails */
+  .member-detail {
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+  }
+
+  .member-detail:last-child {
+    border-bottom: none;
+    margin-top: 4px;
+    padding-bottom: 0;
+  }
+
+  /* Plus d'espace pour le texte long et les emails */
+  .member-detail span {
+    word-break: break-word;
+    flex: 1;
+  }
+
+  /* Augmenter légèrement l'espacement du texte pour améliorer la lisibilité */
+  .member-detail i {
+    margin-top: 2px;
+  }
+
+  /* Réduire un peu la taille de la police pour que tout tienne bien */
+  .member-detail {
+    font-size: 13px;
+  }
+
+  /* S'assurer que l'adresse est bien visible */
+  .member-detail:last-child {
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border-color);
+  }
+
+  .role-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .role-filter-label {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .role-filter-options {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .member-card-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .role-select-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .role-select {
+    flex: 1;
+  }
+
+  .card-action-btn {
+    width: 100%;
+  }
+
+  .modal-container {
+    width: 95%;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .cancel-btn {
+    order: 2;
+  }
+
+  .confirm-btn {
+    order: 1;
+  }
+}
+
+/* Style pour la vue en cartes sur mobile */
+.mobile-members-cards {
+  display: none; /* Sera changé en flex par JavaScript pour mobile */
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.member-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.member-card-header {
+  padding: 15px;
+  background-color: rgba(26, 95, 122, 0.03);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.member-name {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.member-inscription {
+  font-size: 12px;
+  color: var(--text-medium);
+}
+
+/* On garde la grille pour desktop mais pas pour mobile */
+@media (min-width: 769px) {
+  .member-card-body {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+.member-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--text-medium);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.member-detail i {
+  color: var(--main-blue);
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+
+.member-card-actions {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid var(--border-color);
+}
+
+.card-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-action-btn.edit-btn {
+  background-color: rgba(26, 95, 122, 0.1);
+  color: var(--main-blue);
+}
+
+.card-action-btn.edit-btn:hover {
+  background-color: rgba(26, 95, 122, 0.2);
+}
+
+.card-action-btn.delete-btn {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--danger);
+}
+
+.card-action-btn.delete-btn:hover {
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+.card-action-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Animation subtile pour les cartes */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.member-card {
+  animation: cardAppear 0.3s ease-out forwards;
+  background-color: white; /* Assurez-vous que la carte est visible */
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+
+.member-card:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.member-card:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.member-card:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.member-card:nth-child(n + 5) {
+  animation-delay: 0.2s;
+}
+
+/* Styles pour les filtres de rôle */
+.role-filters {
+  display: flex;
+  align-items: center;
+  background-color: rgba(26, 95, 122, 0.03);
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.role-filter-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-right: 15px;
+}
+
+.role-filter-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--text-medium);
+  cursor: pointer;
+}
+
+/* Styles pour les badges de rôle */
+.member-role {
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.member-role.admin {
+  background-color: rgba(26, 95, 122, 0.1);
+  color: var(--main-blue);
+}
+
+.member-role.reservation {
+  background-color: rgba(255, 145, 0, 0.1);
+  color: var(--main-orange);
+}
+
+.member-role.adherent {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+/* Styles pour les sélecteurs de rôle */
+.role-select {
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 13px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.role-select:focus {
+  border-color: var(--main-blue);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(26, 95, 122, 0.1);
+}
+
+.role-cell {
+  white-space: nowrap;
+}
+
+.role-select-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: auto;
+}
+
+.role-select-container label {
+  font-size: 13px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+/* Notification de changement de rôle */
+.role-notification {
+  position: fixed;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--success);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: bottom 0.3s ease;
+}
+
+.role-notification.show {
+  bottom: 20px;
+}
+
+/* Modification pour les cartes en mobile */
+.member-card-header {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.member-card-actions {
+  padding: 12px 15px;
+  display: flex;
+  gap: 8px;
+  background-color: #f9f9f9;
+  border-top: 1px solid var(--border-color);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Styles pour les badges de rôle fixes (remplace les select) */
+.role-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+}
+
+.role-badge.admin {
+  background-color: rgba(26, 95, 122, 0.1);
+  color: var(--main-blue);
+}
+
+.role-badge.reservation {
+  background-color: rgba(255, 145, 0, 0.1);
+  color: var(--main-orange);
+}
+
+.role-badge.adherent {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+/* Modifier les boutons d'action pour qu'ils fonctionnent comme des liens */
+.action-btn.edit-btn,
+.card-action-btn.edit-btn {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+/* Styles pour la modal de confirmation de suppression */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  backdrop-filter: blur(3px);
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-overlay.show .modal-container {
+  transform: translateY(0);
+}
+
+.modal-header {
+  background-color: #f8f8f8;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-header-icon {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--danger);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-header-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.modal-content {
+  padding: 24px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+  font-size: 18px;
+}
+
+.modal-content p {
+  margin: 8px 0;
+  color: var(--text-medium);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-content p.warning {
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #eaeaea;
+}
+
+.cancel-btn,
+.confirm-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background-color: #f0f0f0;
+  color: var(--text-dark);
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.confirm-btn {
+  background-color: var(--danger);
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #c0392b;
+}
