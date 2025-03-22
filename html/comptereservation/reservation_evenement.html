@@ -167,6 +167,35 @@
           order: 1;
         }
       }
+
+      /* Styles pour les boutons d'action */
+      .action-btn.view-btn,
+      .card-action-btn.view-btn {
+        color: var(--main-blue);
+        background-color: transparent; /* Fond transparent au lieu de bleuté */
+      }
+
+      .action-btn.view-btn:hover,
+      .card-action-btn.view-btn:hover {
+        background-color: var(--main-blue);
+        color: white;
+      }
+
+      .view-btn i {
+        color: inherit;
+      }
+
+      .action-btn-container {
+        display: flex;
+        gap: 6px;
+      }
+
+      /* Spécifique pour mobile - garder le fond bleuté */
+      @media (max-width: 768px) {
+        .card-action-btn.view-btn {
+          background-color: rgba(24, 119, 242, 0.1);
+        }
+      }
     </style>
   </head>
   <body>
@@ -209,7 +238,7 @@
             </a>
           </li>
           <li>
-            <a href="reservation_evenements.html" class="active">
+            <a href="reservation_evenement.html" class="active">
               <i data-lucide="calendar"></i>
               Événements
             </a>
@@ -390,6 +419,13 @@
                   </div>
                   <div class="event-card-actions">
                     <a
+                      href="reservation_evenement_details.html?id=1"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
+                    <a
                       href="reservation_editevenement.html?id=1"
                       class="card-action-btn edit-btn"
                     >
@@ -428,6 +464,13 @@
                   </div>
                   <div class="event-card-actions">
                     <a
+                      href="reservation_evenement_details.html?id=2"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
+                    <a
                       href="reservation_editevenement.html?id=2"
                       class="card-action-btn edit-btn"
                     >
@@ -465,6 +508,20 @@
                     </div>
                   </div>
                   <div class="event-card-actions">
+                    <a
+                      href="reservation_evenement_details.html?id=3"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
+                    <a
+                      href="reservation_editevenement.html?id=3"
+                      class="card-action-btn edit-btn"
+                    >
+                      <i data-lucide="pencil"></i>
+                      Modifier
+                    </a>
                     <button class="card-action-btn delete-btn">
                       <i data-lucide="trash-2"></i>
                       Supprimer
@@ -501,6 +558,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_evenement_details.html?id=1"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editevenement.html?id=1"
                           class="action-btn edit-btn"
                           title="Modifier cet événement"
@@ -526,6 +590,13 @@
                     <td><span class="status-upcoming">À venir</span></td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_evenement_details.html?id=2"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editevenement.html?id=2"
                           class="action-btn edit-btn"
@@ -553,6 +624,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_evenement_details.html?id=3"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editevenement.html?id=3"
                           class="action-btn edit-btn"
                           title="Modifier cet événement"
@@ -578,6 +656,20 @@
                     <td><span class="status-past">Terminé</span></td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_evenement_details.html?id=4"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
+                          href="reservation_editevenement.html?id=4"
+                          class="action-btn edit-btn"
+                          title="Modifier cet événement"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
                         <button
                           class="action-btn delete-btn"
                           title="Supprimer cet événement"
@@ -597,6 +689,20 @@
                     <td><span class="status-past">Terminé</span></td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_evenement_details.html?id=5"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
+                          href="reservation_editevenement.html?id=5"
+                          class="action-btn edit-btn"
+                          title="Modifier cet événement"
+                        >
+                          <i data-lucide="pencil"></i>
+                        </a>
                         <button
                           class="action-btn delete-btn"
                           title="Supprimer cet événement"
@@ -616,6 +722,13 @@
                     <td><span class="status-upcoming">À venir</span></td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_evenement_details.html?id=6"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editevenement.html?id=6"
                           class="action-btn edit-btn"
@@ -642,6 +755,13 @@
                     <td><span class="status-upcoming">À venir</span></td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_evenement_details.html?id=7"
+                          class="action-btn view-btn"
+                          title="Voir cet événement"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editevenement.html?id=7"
                           class="action-btn edit-btn"
@@ -686,7 +806,7 @@
         <i data-lucide="layout-dashboard"></i>
         <span>Dashboard</span>
       </a>
-      <a href="reservation_evenements.html" class="nav-item active">
+      <a href="reservation_evenement.html" class="nav-item active">
         <i data-lucide="calendar"></i>
         <span>Événements</span>
       </a>
@@ -998,6 +1118,21 @@
             }
           });
         }
+
+        // Amélioration de la gestion des boutons de vue
+        document.querySelectorAll(".view-btn").forEach((viewBtn) => {
+          viewBtn.addEventListener("click", function (e) {
+            // Pour le débogage
+            console.log("Clic sur bouton view-btn détecté");
+            console.log("URL cible:", this.getAttribute("href"));
+
+            // Forcer la navigation
+            const url = this.getAttribute("href");
+            if (url) {
+              window.location.href = url;
+            }
+          });
+        });
       });
     </script>
   </body>

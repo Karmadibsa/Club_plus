@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Détails du Membre</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_membres.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_membre_details.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="admin_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="admin_evenement.html">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="admin_membres.html" class="active">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+          <li>
+            <a href="admin_monclub.html">
+              <i data-lucide="home"></i>
+              Mon Club
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <a href="admin_membres.html" class="back-btn">
+            <i data-lucide="arrow-left"></i> Retour à la liste des membres
+          </a>
+
+          <div class="member-details-container">
+            <div class="member-header">
+              <div class="member-title-section">
+                <h1 id="memberName">Martin Dupont</h1>
+              </div>
+              <div class="member-actions">
+                <a
+                  href="admin_editmembre.html?id=1"
+                  class="member-action-btn edit-member-btn"
+                >
+                  <i data-lucide="pencil"></i> Modifier le membre
+                </a>
+                <button
+                  class="member-action-btn delete-member-btn"
+                  id="deleteMemberBtn"
+                >
+                  <i data-lucide="trash-2"></i> Supprimer
+                </button>
+              </div>
+            </div>
+
+            <div class="member-info-card">
+              <div class="info-item">
+                <div class="info-label">Date de naissance</div>
+                <div class="info-value" id="memberBirthDate">15/06/1985</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Téléphone</div>
+                <div class="info-value" id="memberPhone">06 12 34 56 78</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="memberEmail">
+                  martin.dupont@email.com
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Date d'inscription</div>
+                <div class="info-value highlight" id="memberJoinDate">
+                  15/04/2023
+                </div>
+              </div>
+            </div>
+
+            <div class="member-details">
+              <h3 class="details-title">Adresse</h3>
+              <div class="details-content" id="memberAddress">
+                <p>23 rue des Lilas, 75001 Paris</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reservations-section">
+            <div class="reservations-header">
+              <h2>Réservations du membre</h2>
+              <span class="reservations-count" id="reservationsCount"
+                >5 réservations</span
+              >
+            </div>
+
+            <table class="reservation-table">
+              <thead>
+                <tr>
+                  <th>Événement</th>
+                  <th>Date</th>
+                  <th>Lieu</th>
+                  <th>Catégorie de place</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="reservationsList">
+                <tr>
+                  <td data-label="Événement">Tournoi de Tennis</td>
+                  <td data-label="Date">15/06/2023</td>
+                  <td data-label="Lieu">Courts centraux</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Actions" class="event-actions">
+                    <a
+                      href="admin_evenement_details.html?id=1"
+                      class="action-btn view-btn"
+                      title="Voir l'événement"
+                    >
+                      <i data-lucide="eye"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Événement">Soirée Gala</td>
+                  <td data-label="Date">20/06/2023</td>
+                  <td data-label="Lieu">Grand Hall</td>
+                  <td data-label="Catégorie de place">VIP</td>
+                  <td data-label="Actions" class="event-actions">
+                    <a
+                      href="admin_evenement_details.html?id=2"
+                      class="action-btn view-btn"
+                      title="Voir l'événement"
+                    >
+                      <i data-lucide="eye"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Événement">Cours de Natation Avancé</td>
+                  <td data-label="Date">25/06/2023</td>
+                  <td data-label="Lieu">Piscine olympique</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Actions" class="event-actions">
+                    <a
+                      href="admin_evenement_details.html?id=3"
+                      class="action-btn view-btn"
+                      title="Voir l'événement"
+                    >
+                      <i data-lucide="eye"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Événement">Match de Football Amical</td>
+                  <td data-label="Date">02/07/2023</td>
+                  <td data-label="Lieu">Terrain principal</td>
+                  <td data-label="Catégorie de place">Premium</td>
+                  <td data-label="Actions" class="event-actions">
+                    <a
+                      href="admin_evenement_details.html?id=4"
+                      class="action-btn view-btn"
+                      title="Voir l'événement"
+                    >
+                      <i data-lucide="eye"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Événement">Séance de Yoga</td>
+                  <td data-label="Date">05/05/2023</td>
+                  <td data-label="Lieu">Salle de fitness</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Actions" class="event-actions">
+                    <a
+                      href="admin_evenement_details.html?id=3"
+                      class="action-btn view-btn"
+                      title="Voir l'événement"
+                    >
+                      <i data-lucide="eye"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="admin_dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin_evenement.html" class="nav-item">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="admin_membres.html" class="nav-item active">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+      <a href="admin_monclub.html" class="nav-item">
+        <i data-lucide="home"></i>
+        <span>Club</span>
+      </a>
+    </nav>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <i data-lucide="trash-2"></i>
+          </div>
+          <h3>Confirmer la suppression</h3>
+        </div>
+        <div class="modal-content">
+          <p>Vous êtes sur le point de supprimer le membre :</p>
+          <p id="memberNameToDelete" style="font-weight: 600; margin: 10px 0">
+            Martin Dupont
+          </p>
+          <p class="warning">
+            Cette action est irréversible et supprimera toutes les données
+            associées à ce membre.
+          </p>
+          <div class="modal-actions">
+            <button id="cancelDelete" class="cancel-btn">Annuler</button>
+            <button id="confirmDelete" class="confirm-btn">
+              Supprimer définitivement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+        }
+
+        // Récupérer l'id du membre depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberId = urlParams.get("id");
+
+        // Gestion de la suppression de membre
+        const deleteBtn = document.getElementById("deleteMemberBtn");
+        const deleteModal = document.getElementById("deleteModal");
+        const cancelDelete = document.getElementById("cancelDelete");
+        const confirmDelete = document.getElementById("confirmDelete");
+
+        if (deleteBtn && deleteModal) {
+          deleteBtn.addEventListener("click", function () {
+            deleteModal.classList.add("show");
+          });
+        }
+
+        if (cancelDelete) {
+          cancelDelete.addEventListener("click", function () {
+            deleteModal.classList.remove("show");
+          });
+        }
+
+        if (confirmDelete) {
+          confirmDelete.addEventListener("click", function () {
+            // Rediriger vers la page des membres après suppression
+            window.location.href = "admin_membres.html";
+          });
+        }
+
+        // Simuler le chargement des données du membre avec l'ID
+        function loadMemberData() {
+          // Définir les liens de modification avec l'ID correct
+          const editBtn = document.querySelector(".edit-member-btn");
+          if (editBtn && memberId) {
+            editBtn.href = `admin_editmembre.html?id=${memberId}`;
+          }
+
+          // Pour une démo, nous pourrions simuler différentes données selon l'ID
+          if (memberId === "2") {
+            document.getElementById("memberName").textContent =
+              "Sophie Laurent";
+            document.getElementById("memberBirthDate").textContent =
+              "22/09/1990";
+            document.getElementById("memberPhone").textContent =
+              "07 23 45 67 89";
+            document.getElementById("memberEmail").textContent =
+              "sophie.laurent@email.com";
+            document.getElementById("memberJoinDate").textContent =
+              "12/04/2023";
+            document.getElementById("memberAddress").innerHTML =
+              "<p>45 avenue Victor Hugo, 75016 Paris</p>";
+            document.getElementById("reservationsCount").textContent =
+              "3 réservations";
+          } else if (memberId === "3") {
+            document.getElementById("memberName").textContent =
+              "Thomas Bernard";
+            document.getElementById("memberStatus").className =
+              "status-waiting";
+            document.getElementById("memberStatus").textContent =
+              "En attente de validation";
+            document.getElementById("memberBirthDate").textContent =
+              "03/12/1978";
+            document.getElementById("memberPhone").textContent =
+              "06 34 56 78 90";
+            document.getElementById("memberEmail").textContent =
+              "thomas.bernard@email.com";
+            document.getElementById("memberJoinDate").textContent =
+              "10/04/2023";
+            document.getElementById("memberAddress").innerHTML =
+              "<p>8 rue du Commerce, 75015 Paris</p>";
+            document.getElementById("reservationsCount").textContent =
+              "2 réservations";
+          }
+
+          // Mettre à jour le nom du membre dans la modal de suppression
+          document.getElementById("memberNameToDelete").textContent =
+            document.getElementById("memberName").textContent;
+        }
+
+        // Charger les données si un ID est présent
+        if (memberId) {
+          loadMemberData();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Détails de l'Événement</title>
+    <link rel="stylesheet" href="../../css/base/root.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_evenements.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/pages/compteadmin/admin_evenement_details.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <!-- Header pour mobile -->
+    <header class="mobile-header">
+      <div class="logo-container">
+        <img
+          src="../../assets/images/LogoClubPlussansfond.png"
+          alt="Logo Club Plus"
+          class="logo"
+        />
+      </div>
+      <div class="mobile-header-right">
+        <a
+          href="../public/public_connexion.html"
+          class="mobile-logout-btn"
+          title="Déconnexion"
+        >
+          <i data-lucide="log-out"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar pour la navigation desktop -->
+      <div class="sidebar">
+        <div class="logo-container">
+          <img
+            src="../../assets/images/LogoClubPlussansfond.png"
+            alt="Logo Club Plus"
+            class="logo"
+          />
+        </div>
+        <!-- Sidebar Navigation -->
+        <ul class="menu-items">
+          <li>
+            <a href="admin_dashboard.html">
+              <i data-lucide="layout-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="admin_evenement.html" class="active">
+              <i data-lucide="calendar"></i>
+              Événements
+            </a>
+          </li>
+          <li>
+            <a href="admin_membres.html">
+              <i data-lucide="users"></i>
+              Membres
+            </a>
+          </li>
+          <li>
+            <a href="admin_monclub.html">
+              <i data-lucide="home"></i>
+              Mon Club
+            </a>
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a
+            href="../public/public_connexion.html"
+            class="logout-btn"
+            title="Déconnexion"
+          >
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="container-page">
+        <div class="container">
+          <a href="admin_evenement.html" class="back-btn">
+            <i data-lucide="arrow-left"></i> Retour à la liste des événements
+          </a>
+
+          <div class="event-details-container">
+            <div class="event-header">
+              <div class="event-title-section">
+                <h1 id="eventTitle">Tournoi de Tennis</h1>
+                <span class="status-upcoming" id="eventStatus">À venir</span>
+              </div>
+              <div class="event-actions">
+                <a
+                  href="admin_editevenement.html?id=1"
+                  class="event-action-btn edit-event-btn"
+                >
+                  <i data-lucide="pencil"></i> Modifier l'événement
+                </a>
+                <button
+                  class="event-action-btn delete-event-btn"
+                  id="deleteEventBtn"
+                >
+                  <i data-lucide="trash-2"></i> Supprimer
+                </button>
+              </div>
+            </div>
+
+            <div class="event-info-card">
+              <div class="info-item">
+                <div class="info-label">Date</div>
+                <div class="info-value" id="eventDate">15 Juin 2023</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Horaires</div>
+                <div class="info-value" id="eventTime">14:00 - 18:00</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Lieu</div>
+                <div class="info-value" id="eventLocation">Courts centraux</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Places</div>
+                <div class="info-value highlight" id="eventCapacity">
+                  28 / 32 participants
+                </div>
+              </div>
+            </div>
+
+            <div class="event-description">
+              <h3 class="description-title">Description de l'événement</h3>
+              <div class="description-content" id="eventDescription">
+                <p>
+                  Rejoignez notre tournoi de tennis amical ! Ce tournoi est
+                  ouvert à tous les membres du club, quel que soit votre niveau.
+                  Des matchs seront organisés selon des groupes de niveau pour
+                  que chacun puisse profiter pleinement et progresser.
+                </p>
+                <p>
+                  Matériel requis : Raquette de tennis, tenue de sport adaptée
+                  et chaussures de tennis.
+                </p>
+                <p>
+                  Des rafraîchissements seront offerts aux participants pendant
+                  l'événement.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="participants-section">
+            <div class="participants-header">
+              <h2>Participants inscrits</h2>
+              <span class="participants-count" id="participantsCount"
+                >28 / 32</span
+              >
+            </div>
+
+            <table class="participants-table">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Email</th>
+                  <th>Téléphone</th>
+                  <th>Catégorie de place</th>
+                  <th>Date d'inscription</th>
+                </tr>
+              </thead>
+              <tbody id="participantsList">
+                <tr>
+                  <td data-label="Nom" class="participant-name">Jean Dupont</td>
+                  <td data-label="Email">jean.dupont@email.com</td>
+                  <td data-label="Téléphone">06 12 34 56 78</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Date de réservation">10/05/2023</td>
+                </tr>
+                <tr>
+                  <td data-label="Nom" class="participant-name">
+                    Marie Martin
+                  </td>
+                  <td data-label="Email">marie.martin@email.com</td>
+                  <td data-label="Téléphone">07 23 45 67 89</td>
+                  <td data-label="Catégorie de place">VIP</td>
+                  <td data-label="Date de réservation">11/05/2023</td>
+                </tr>
+                <tr>
+                  <td data-label="Nom" class="participant-name">
+                    Pierre Leclerc
+                  </td>
+                  <td data-label="Email">pierre.leclerc@email.com</td>
+                  <td data-label="Téléphone">06 34 56 78 90</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Date de réservation">12/05/2023</td>
+                </tr>
+                <tr>
+                  <td data-label="Nom" class="participant-name">
+                    Sophie Dubois
+                  </td>
+                  <td data-label="Email">sophie.dubois@email.com</td>
+                  <td data-label="Téléphone">07 45 67 89 01</td>
+                  <td data-label="Catégorie de place">Premium</td>
+                  <td data-label="Date de réservation">13/05/2023</td>
+                </tr>
+                <tr>
+                  <td data-label="Nom" class="participant-name">
+                    Thomas Bernard
+                  </td>
+                  <td data-label="Email">thomas.bernard@email.com</td>
+                  <td data-label="Téléphone">06 56 78 90 12</td>
+                  <td data-label="Catégorie de place">Standard</td>
+                  <td data-label="Date de réservation">14/05/2023</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="mobile-nav">
+      <a href="admin_dashboard.html" class="nav-item">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin_evenement.html" class="nav-item active">
+        <i data-lucide="calendar"></i>
+        <span>Événements</span>
+      </a>
+      <a href="admin_membres.html" class="nav-item">
+        <i data-lucide="users"></i>
+        <span>Membres</span>
+      </a>
+      <a href="admin_monclub.html" class="nav-item">
+        <i data-lucide="home"></i>
+        <span>Club</span>
+      </a>
+    </nav>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <i data-lucide="trash-2"></i>
+          </div>
+          <h3>Confirmer la suppression</h3>
+        </div>
+        <div class="modal-content">
+          <p>Vous êtes sur le point de supprimer l'événement :</p>
+          <p id="eventNameToDelete" style="font-weight: 600; margin: 10px 0">
+            Tournoi de Tennis
+          </p>
+          <p class="warning">
+            Cette action est irréversible et supprimera toutes les données
+            associées à cet événement.
+          </p>
+          <div class="modal-actions">
+            <button id="cancelDelete" class="cancel-btn">Annuler</button>
+            <button id="confirmDelete" class="confirm-btn">
+              Supprimer définitivement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialiser les icônes Lucide
+        if (typeof lucide !== "undefined") {
+          lucide.createIcons();
+        }
+
+        // Récupérer l'id de l'événement depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get("id");
+
+        // Gestion de la suppression d'événement
+        const deleteBtn = document.getElementById("deleteEventBtn");
+        const deleteModal = document.getElementById("deleteModal");
+        const cancelDelete = document.getElementById("cancelDelete");
+        const confirmDelete = document.getElementById("confirmDelete");
+
+        if (deleteBtn && deleteModal) {
+          deleteBtn.addEventListener("click", function () {
+            deleteModal.classList.add("show");
+          });
+        }
+
+        if (cancelDelete) {
+          cancelDelete.addEventListener("click", function () {
+            deleteModal.classList.remove("show");
+          });
+        }
+
+        if (confirmDelete) {
+          confirmDelete.addEventListener("click", function () {
+            // Rediriger vers la page des événements après suppression
+            window.location.href = "admin_evenement.html";
+          });
+        }
+
+        // Dans une application réelle, vous chargeriez les données de l'événement depuis une API ou une base de données
+        // Simuler le chargement des données d'événement avec l'ID
+        function loadEventData() {
+          // Définir les liens de modification avec l'ID correct
+          const editBtn = document.querySelector(".edit-event-btn");
+          if (editBtn && eventId) {
+            editBtn.href = `admin_editevenement.html?id=${eventId}`;
+          }
+
+          // Pour une démo, nous pourrions simuler différentes données selon l'ID
+          if (eventId === "2") {
+            document.getElementById("eventTitle").textContent =
+              "Match de Football Amical";
+            document.getElementById("eventStatus").className = "status-full";
+            document.getElementById("eventStatus").textContent = "Complet";
+            document.getElementById("eventDate").textContent = "25 Juin 2023";
+            document.getElementById("eventTime").textContent = "15:30 - 17:30";
+            document.getElementById("eventLocation").textContent =
+              "Terrain principal";
+            document.getElementById("eventCapacity").textContent =
+              "22 / 22 participants";
+            document.getElementById("participantsCount").textContent =
+              "22 / 22";
+            document.getElementById("eventDescription").innerHTML =
+              "<p>Un match amical de football entre membres du club. Une occasion parfaite pour développer l'esprit d'équipe et s'amuser.</p>";
+          } else if (eventId === "3") {
+            document.getElementById("eventTitle").textContent =
+              "Séance de Yoga";
+            document.getElementById("eventStatus").className = "status-past";
+            document.getElementById("eventStatus").textContent = "Terminé";
+            document.getElementById("eventDate").textContent = "5 Mai 2023";
+            document.getElementById("eventTime").textContent = "09:00 - 10:30";
+            document.getElementById("eventLocation").textContent =
+              "Salle de fitness";
+            document.getElementById("eventCapacity").textContent =
+              "15 / 20 participants";
+            document.getElementById("participantsCount").textContent =
+              "15 / 20";
+            document.getElementById("eventDescription").innerHTML =
+              "<p>Une séance de yoga pour tous les niveaux. Apportez votre tapis et une bouteille d'eau.</p>";
+          }
+
+          // Mettre à jour le nom de l'événement dans la modal de suppression
+          document.getElementById("eventNameToDelete").textContent =
+            document.getElementById("eventTitle").textContent;
+        }
+
+        // Charger les données si un ID est présent
+        if (eventId) {
+          loadEventData();
+        }
+      });
+    </script>
+  </body>
+</html>

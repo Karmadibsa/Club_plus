@@ -16,6 +16,37 @@
     />
     <!-- Utilisation d'une version spécifique et stable de Lucide -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+    <!-- Styles additionnels pour les boutons d'actions -->
+    <style>
+      .action-btn.view-btn,
+      .card-action-btn.view-btn {
+        color: var(--main-blue);
+        background-color: transparent; /* Fond transparent au lieu de bleuté */
+      }
+
+      .action-btn.view-btn:hover,
+      .card-action-btn.view-btn:hover {
+        background-color: var(--main-blue);
+        color: white;
+      }
+
+      .view-btn i {
+        color: inherit;
+      }
+
+      .action-btn-container {
+        display: flex;
+        gap: 6px;
+      }
+
+      /* Spécifique pour mobile - garder le fond bleuté */
+      @media (max-width: 768px) {
+        .card-action-btn.view-btn {
+          background-color: rgba(24, 119, 242, 0.1);
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Header pour mobile -->
@@ -184,6 +215,13 @@
                   </div>
                   <div class="member-card-actions">
                     <a
+                      href="reservation_membre_details.html?id=1"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
+                    <a
                       href="reservation_editmembre.html?id=1"
                       class="card-action-btn edit-btn"
                     >
@@ -222,6 +260,13 @@
                     </div>
                   </div>
                   <div class="member-card-actions">
+                    <a
+                      href="reservation_membre_details.html?id=2"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
                     <a
                       href="reservation_editmembre.html?id=2"
                       class="card-action-btn edit-btn"
@@ -263,6 +308,13 @@
                   </div>
                   <div class="member-card-actions">
                     <a
+                      href="reservation_membre_details.html?id=3"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
+                    <a
                       href="reservation_editmembre.html?id=3"
                       class="card-action-btn edit-btn"
                     >
@@ -301,6 +353,13 @@
                     </div>
                   </div>
                   <div class="member-card-actions">
+                    <a
+                      href="reservation_membre_details.html?id=4"
+                      class="card-action-btn view-btn"
+                    >
+                      <i data-lucide="eye"></i>
+                      Voir
+                    </a>
                     <a
                       href="reservation_editmembre.html?id=4"
                       class="card-action-btn edit-btn"
@@ -347,6 +406,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_membre_details.html?id=1"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editmembre.html?id=1"
                           class="action-btn edit-btn"
                           title="Modifier ce membre"
@@ -374,6 +440,13 @@
                     </td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_membre_details.html?id=2"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editmembre.html?id=2"
                           class="action-btn edit-btn"
@@ -403,6 +476,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_membre_details.html?id=3"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editmembre.html?id=3"
                           class="action-btn edit-btn"
                           title="Modifier ce membre"
@@ -430,6 +510,13 @@
                     </td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_membre_details.html?id=4"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editmembre.html?id=4"
                           class="action-btn edit-btn"
@@ -459,6 +546,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_membre_details.html?id=5"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editmembre.html?id=5"
                           class="action-btn edit-btn"
                           title="Modifier ce membre"
@@ -486,6 +580,13 @@
                     </td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_membre_details.html?id=6"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editmembre.html?id=6"
                           class="action-btn edit-btn"
@@ -515,6 +616,13 @@
                     <td class="actions-cell">
                       <div class="action-btn-container">
                         <a
+                          href="reservation_membre_details.html?id=7"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
+                        <a
                           href="reservation_editmembre.html?id=7"
                           class="action-btn edit-btn"
                           title="Modifier ce membre"
@@ -542,6 +650,13 @@
                     </td>
                     <td class="actions-cell">
                       <div class="action-btn-container">
+                        <a
+                          href="reservation_membre_details.html?id=8"
+                          class="action-btn view-btn"
+                          title="Voir ce membre"
+                        >
+                          <i data-lucide="eye"></i>
+                        </a>
                         <a
                           href="reservation_editmembre.html?id=8"
                           class="action-btn edit-btn"
@@ -588,7 +703,7 @@
         <i data-lucide="layout-dashboard"></i>
         <span>Dashboard</span>
       </a>
-      <a href="reservation_evenements.html" class="nav-item">
+      <a href="reservation_evenement.html" class="nav-item">
         <i data-lucide="calendar"></i>
         <span>Événements</span>
       </a>
@@ -847,6 +962,36 @@
             });
           });
         }
+
+        // Vérifiez que tous les liens de détails fonctionnent correctement
+        document.querySelectorAll(".view-btn").forEach(function (viewBtn) {
+          viewBtn.addEventListener("click", function (e) {
+            // Empêcher la propagation pour éviter les interférences
+            e.stopPropagation();
+
+            // Extraire l'ID et vérifier qu'il est présent
+            const url = viewBtn.getAttribute("href");
+            const id = url.split("?id=")[1];
+
+            console.log("Navigation vers les détails du membre ID:", id);
+
+            // Ne pas bloquer la navigation, mais ajouter ce log pour le débogage
+          });
+        });
+
+        // Amélioration de la gestion des boutons de vue
+        document.querySelectorAll(".view-btn").forEach((viewBtn) => {
+          viewBtn.addEventListener("click", function (e) {
+            e.preventDefault(); // Empêcher le comportement par défaut du lien
+            e.stopPropagation(); // Empêcher la propagation
+
+            const url = this.getAttribute("href");
+            if (url) {
+              console.log("Navigation vers:", url);
+              window.location.href = url; // Force la navigation
+            }
+          });
+        });
       });
     </script>
     <script src="../../js/pages/mesamis.js"></script>
